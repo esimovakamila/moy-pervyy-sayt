@@ -243,6 +243,38 @@
     font-size:16px;
   }
 
+  /* Real numbers */
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+  }
+  .stat-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:34px 24px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .stat-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .stat-card .icon-circle{margin:0 auto 16px;width:56px;height:56px;font-size:26px;border-radius:16px;}
+  .stat-number{font-size:30px;font-weight:800;color:var(--blue-deep);line-height:1.1;}
+  .stat-label{font-size:14.5px;color:var(--muted);margin-top:8px;}
+
+  /* Not just a trip */
+  .lifestyle-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .fine-print{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-top:26px;
+  }
+
   /* Accessible for everyone */
   .everyone{
     background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);
@@ -617,6 +649,8 @@
   @media(max-width:980px){
     .about-grid, .why-me, .contact-wrap{grid-template-columns:1fr;}
     .cards-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .lifestyle-grid{grid-template-columns:repeat(2,1fr);}
     .dest-grid{grid-template-columns:1fr;}
     .benefit-grid{grid-template-columns:repeat(2,1fr);}
     .steps{grid-template-columns:repeat(2,1fr);}
@@ -628,6 +662,8 @@
     section{padding:60px 0;}
     .nav-cta .btn span{display:none;}
     .cards-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr;}
+    .lifestyle-grid{grid-template-columns:1fr;}
     .benefit-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     .hero{padding:150px 0 80px;}
@@ -662,6 +698,35 @@
       <div class="hero-stat"><b>2:1</b><span>баллы за каждый $1</span></div>
       <div class="hero-stat"><b>4-6</b><span>стран за 1 поездку</span></div>
       <div class="hero-stat"><b>3</b><span>тарифа под бюджет</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="stats" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Реальные цифры</h2>
+    <p class="section-sub reveal">InCruises — это не просто идея, а работающая международная сеть с реальными результатами.</p>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="icon-circle">🌐</div>
+        <div class="stat-number">1,6 млн+</div>
+        <div class="stat-label">участников по всему миру</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🗺️</div>
+        <div class="stat-number">200+</div>
+        <div class="stat-label">стран</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🛳️</div>
+        <div class="stat-number">700 000+</div>
+        <div class="stat-label">поездок забронировано с 2016 года</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">📈</div>
+        <div class="stat-number">50 000+</div>
+        <div class="stat-label">пассажиров только за первые месяцы 2026 года</div>
+      </div>
     </div>
   </div>
 </section>
@@ -787,6 +852,51 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section id="more-than-travel" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Это не просто путешествие</h2>
+    <p class="section-sub reveal">InCruises — это про жизнь на борту: события, знакомства, отдых и комфорт для каждого.</p>
+    <div class="lifestyle-grid">
+      <div class="info-card reveal">
+        <div class="icon-circle">💍</div>
+        <h3>Свадьбы и торжества на лайнере</h3>
+        <p>Многие круизные компании предлагают услуги для свадебных церемоний прямо на борту.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🤝</div>
+        <h3>Знакомства и новые связи</h3>
+        <p>На лайнере тысячи людей со всего мира — отличная возможность расширить круг общения, в том числе для тех, кто в поиске второй половинки.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🏋️</div>
+        <h3>Разные виды активностей</h3>
+        <p>От спортзалов и бассейнов до скалодромов, танцев, шоу и мастер-классов — каждый найдёт себе занятие.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🌅</div>
+        <h3>Каюты с балконом</h3>
+        <p>Доступны на большинстве лайнеров — вид на океан прямо из своей каюты.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🎈</div>
+        <h3>Развлечения для любого возраста</h3>
+        <p>От детских клубов до вечеринок для взрослых и спокойного отдыха для пожилых пар.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🍽️</div>
+        <h3>Питание включено</h3>
+        <p>Большинство лайнеров предлагают шведский стол и рестораны без доплаты.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🕌</div>
+        <h3>Для мусульман</h3>
+        <p>Многие крупные лайнеры оборудуют молитвенные комнаты и предлагают халяльное меню (уточняется на конкретном рейсе).</p>
+      </div>
+    </div>
+    <p class="fine-print reveal">Наличие удобств зависит от конкретного лайнера и маршрута</p>
   </div>
 </section>
 
