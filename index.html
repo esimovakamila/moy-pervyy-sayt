@@ -7,6 +7,8 @@
 <meta name="description" content="InCruises — клуб путешествий по подписке. Скидка 17% сразу, накопительные баллы, круизы по нескольким странам за одну поездку. Присоединяйся к тем, кто уже выбрал свободу.">
 <style>
   :root{
+    /* BENEFITS_BG_IMAGE — плейсхолдер, замените ссылку на своё фото (люди смеются на палубе круизного лайнера) */
+    --BENEFITS_BG_IMAGE: url('https://images.unsplash.com/photo-1580541631950-7282082b53ce?auto=format&fit=crop&w=1600&q=80');
     --teal:#0891a8;
     --teal-dark:#046380;
     --blue-deep:#053a5f;
@@ -409,7 +411,13 @@
   .lightbox-close:hover{background:rgba(255,255,255,0.25);}
 
   /* Benefits */
-  .benefits{background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid) 55%, var(--teal));color:#fff;}
+  .benefits{
+    background-image:linear-gradient(rgba(13,71,105,0.75), rgba(13,71,105,0.75)), var(--BENEFITS_BG_IMAGE);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    color:#fff;
+  }
   .benefits h2, .benefits .section-sub{color:#fff;}
   .benefits .section-sub{color:rgba(255,255,255,0.85);}
   .benefit-grid{
