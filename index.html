@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InCruises — Путешествия по подписке | Начни жить сейчас</title>
+<meta name="description" content="InCruises — клуб путешествий по подписке. Скидка 17% сразу, накопительные баллы, круизы по нескольким странам за одну поездку. Присоединяйся к тем, кто уже выбрал свободу.">
+<style>
+  :root{
+    /* BENEFITS_BG_IMAGE — плейсхолдер, замените ссылку на своё фото (люди смеются на палубе круизного лайнера) */
+    --BENEFITS_BG_IMAGE: url('https://images.unsplash.com/photo-1580541631950-7282082b53ce?auto=format&fit=crop&w=1600&q=80');
+    --teal:#0891a8;
+    --teal-dark:#046380;
+    --blue-deep:#053a5f;
+    --blue-mid:#0d5c8c;
+    --ink:#0b2436;
+    --muted:#5c7383;
+    --bg:#f4f9fb;
+    --white:#ffffff;
+    --accent:#ffb703;
+    --radius:18px;
+    --shadow:0 12px 30px rgba(5,58,95,0.12);
+    --shadow-lg:0 20px 50px rgba(5,58,95,0.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{padding:88px 0;}
+  h1,h2,h3{line-height:1.2;font-weight:800;}
+  h2{font-size:clamp(28px,4vw,42px);color:var(--blue-deep);text-align:center;margin-bottom:16px;}
+  .section-sub{
+    text-align:center;
+    color:var(--muted);
+    font-size:18px;
+    max-width:680px;
+    margin:0 auto 52px;
+  }
+  .badge{
+    display:inline-block;
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    color:#fff;
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:16px 34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:17px;
+    cursor:pointer;
+    border:none;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    color:#fff;
+    box-shadow:0 10px 25px rgba(8,145,168,0.4);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(8,145,168,0.5);}
+  .btn-accent{
+    background:var(--accent);
+    color:#3a2600;
+    box-shadow:0 10px 25px rgba(255,183,3,0.4);
+  }
+  .btn-accent:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(255,183,3,0.5);}
+  .btn-outline{
+    background:transparent;
+    border:2px solid var(--teal);
+    color:var(--teal-dark);
+  }
+  .btn-outline:hover{background:var(--teal);color:#fff;transform:translateY(-3px);}
+  .btn-instagram, .btn-whatsapp, .btn-call{width:100%;}
+  .btn-whatsapp{
+    background:#25D366;
+    color:#fff;
+    box-shadow:0 10px 25px rgba(37,211,102,0.4);
+  }
+  .btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(37,211,102,0.5);}
+
+  /* Header */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:900;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 2px 18px rgba(5,58,95,0.08);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    font-size:22px;
+    font-weight:800;
+    color:var(--blue-deep);
+    letter-spacing:-0.02em;
+  }
+  .logo span{color:var(--teal);}
+  .nav-cta{display:flex;gap:10px;}
+  .nav-cta .btn{padding:10px 22px;font-size:14px;}
+
+  /* Hero */
+  .hero{
+    position:relative;
+    padding:170px 0 110px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.15), transparent 40%),
+      linear-gradient(135deg,var(--blue-deep) 0%, var(--blue-mid) 45%, var(--teal) 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    width:600px;height:600px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    top:-200px;right:-150px;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    width:400px;height:400px;
+    border-radius:50%;
+    background:rgba(255,183,3,0.12);
+    bottom:-150px;left:-100px;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    max-width:820px;
+    margin:0 auto;
+  }
+  .hero h1{
+    font-size:clamp(36px,6vw,64px);
+    margin-bottom:22px;
+    letter-spacing:-0.02em;
+  }
+  .hero p{
+    font-size:clamp(17px,2.2vw,21px);
+    color:rgba(255,255,255,0.92);
+    max-width:620px;
+    margin:0 auto 38px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .hero-stats{
+    display:flex;
+    justify-content:center;
+    gap:44px;
+    margin-top:64px;
+    flex-wrap:wrap;
+  }
+  .hero-stat b{display:block;font-size:30px;font-weight:800;}
+  .hero-stat span{font-size:14px;color:rgba(255,255,255,0.8);}
+
+  /* What is InCruises */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:36px;
+    box-shadow:var(--shadow);
+  }
+  .about-points li{
+    display:flex;
+    gap:16px;
+    margin-bottom:22px;
+    align-items:flex-start;
+  }
+  .about-points li:last-child{margin-bottom:0;}
+  .icon-circle{
+    flex:none;
+    width:52px;height:52px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    display:flex;align-items:center;justify-content:center;
+    font-size:24px;
+    color:#fff;
+  }
+  .about-points h4{font-size:18px;margin-bottom:4px;color:var(--blue-deep);}
+  .about-points p{color:var(--muted);font-size:15.5px;}
+  .about-visual{
+    background:linear-gradient(160deg,var(--teal) 0%, var(--blue-deep) 100%);
+    border-radius:var(--radius);
+    padding:44px 34px;
+    color:#fff;
+    text-align:center;
+    box-shadow:var(--shadow-lg);
+  }
+  .about-visual .big-number{
+    font-size:64px;
+    font-weight:800;
+    line-height:1;
+  }
+  .about-visual .big-label{font-size:16px;opacity:.9;margin-top:6px;}
+  .about-visual hr{border:none;border-top:1px solid rgba(255,255,255,0.25);margin:28px 0;}
+  .points-formula{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    font-size:26px;
+    font-weight:800;
+    margin-top:10px;
+  }
+  .points-formula .op{opacity:.7;font-size:20px;}
+  .points-formula .tag{
+    background:rgba(255,255,255,0.15);
+    border-radius:12px;
+    padding:10px 16px;
+    font-size:16px;
+  }
+
+  /* Real numbers */
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+  }
+  .stat-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:34px 24px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .stat-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .stat-card .icon-circle{margin:0 auto 16px;width:56px;height:56px;font-size:26px;border-radius:16px;}
+  .stat-number{font-size:30px;font-weight:800;color:var(--blue-deep);line-height:1.1;}
+  .stat-label{font-size:14.5px;color:var(--muted);margin-top:8px;}
+
+  /* Not just a trip */
+  .lifestyle-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .fine-print{
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    margin-top:26px;
+  }
+
+  /* Accessible for everyone */
+  .everyone{
+    background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);
+  }
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .info-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    box-shadow:var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .info-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .info-card .icon-circle{margin-bottom:18px;width:58px;height:58px;font-size:28px;border-radius:16px;}
+  .info-card h3{font-size:19px;color:var(--blue-deep);margin-bottom:10px;}
+  .info-card p{color:var(--muted);font-size:15px;}
+
+  /* Destinations */
+  .dest-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .dest-card{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    height:340px;
+    box-shadow:var(--shadow);
+    isolation:isolate;
+  }
+  .dest-card img{
+    width:100%;height:100%;object-fit:cover;
+    position:absolute;inset:0;
+    transition:transform .5s ease;
+    z-index:-1;
+  }
+  .dest-card:hover img{transform:scale(1.08);}
+  .dest-card::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(5,58,95,0) 30%, rgba(5,20,35,0.88) 100%);
+    z-index:0;
+  }
+  .dest-content{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:28px;
+    color:#fff;
+    z-index:1;
+  }
+  .dest-content h3{font-size:22px;margin-bottom:6px;}
+  .dest-content p{font-size:14.5px;color:rgba(255,255,255,0.88);}
+
+  /* My trip videos */
+  .video-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:26px;
+  }
+  .video-card{
+    position:relative;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    aspect-ratio:16/9;
+    background:#04283f;
+    cursor:pointer;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .video-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .video-card video{
+    width:100%;height:100%;
+    object-fit:cover;
+    pointer-events:none;
+  }
+  .video-card::after{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(5,58,95,0) 55%, rgba(5,20,35,0.55) 100%);
+  }
+  .play-btn{
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:68px;height:68px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.92);
+    border:none;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(5,58,95,0.4);
+    font-size:22px;
+    color:var(--blue-deep);
+    z-index:1;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .video-card:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:#fff;}
+  .video-lightbox{
+    position:fixed;
+    inset:0;
+    z-index:1200;
+    background:rgba(3,15,25,0.94);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+  }
+  .video-lightbox.open{display:flex;}
+  .video-lightbox video{
+    max-width:min(920px,92vw);
+    max-height:86vh;
+    border-radius:14px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+    background:#000;
+  }
+  .lightbox-close{
+    position:absolute;
+    top:22px;right:26px;
+    width:46px;height:46px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.3);
+    color:#fff;
+    font-size:20px;
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,0.25);}
+
+  /* Benefits */
+  .benefits{
+    background-image:linear-gradient(rgba(13,71,105,0.75), rgba(13,71,105,0.75)), var(--BENEFITS_BG_IMAGE);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    color:#fff;
+  }
+  .benefits h2, .benefits .section-sub{color:#fff;}
+  .benefits .section-sub{color:rgba(255,255,255,0.85);}
+  .benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:22px;
+  }
+  .benefit-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.18);
+    border-radius:var(--radius);
+    padding:26px 20px;
+    text-align:center;
+    backdrop-filter:blur(6px);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .benefit-card:hover{transform:translateY(-6px);background:rgba(255,255,255,0.15);}
+  .benefit-card .emoji{font-size:34px;margin-bottom:14px;}
+  .benefit-card h4{font-size:16px;margin-bottom:8px;}
+  .benefit-card p{font-size:13.5px;color:rgba(255,255,255,0.85);}
+
+  /* Why me */
+  .why-me{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .why-photo{
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow-lg);
+    position:relative;
+    height:420px;
+  }
+  .why-photo img{width:100%;height:100%;object-fit:cover;}
+  .why-badge{
+    position:absolute;
+    bottom:22px;left:22px;
+    background:var(--white);
+    border-radius:14px;
+    padding:14px 20px;
+    box-shadow:var(--shadow);
+    font-weight:700;
+    color:var(--blue-deep);
+    font-size:15px;
+  }
+  .why-list li{
+    display:flex;
+    gap:16px;
+    margin-bottom:24px;
+    align-items:flex-start;
+  }
+  .why-list h4{color:var(--blue-deep);font-size:18px;margin-bottom:4px;}
+  .why-list p{color:var(--muted);font-size:15.5px;}
+  .why-signature{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid #dde8ee;
+    font-size:15px;
+    color:var(--muted);
+  }
+  .why-signature b{color:var(--blue-deep);}
+
+  /* How it works */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    position:relative;
+  }
+  .step-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:32px 24px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    position:relative;
+  }
+  .step-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;
+    font-size:18px;
+    margin:0 auto 18px;
+  }
+  .step-card h4{font-size:17px;color:var(--blue-deep);margin-bottom:8px;}
+  .step-card p{color:var(--muted);font-size:14.5px;}
+
+  /* Video */
+  .video-wrap{
+    max-width:860px;
+    margin:0 auto;
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow-lg);
+    aspect-ratio:16/9;
+    background:#000;
+  }
+  .video-wrap iframe{width:100%;height:100%;border:0;}
+  .video-caption{
+    text-align:center;
+    margin-top:18px;
+    color:var(--muted);
+    font-size:15px;
+    font-style:italic;
+  }
+
+  /* Gallery */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:220px;
+    gap:18px;
+  }
+  .gallery-grid .g1{grid-column:span 2;grid-row:span 2;}
+  .gallery-item{
+    border-radius:16px;
+    overflow:hidden;
+    position:relative;
+  }
+  .gallery-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.08);}
+
+  /* FAQ */
+  .faq-list{max-width:780px;margin:0 auto;}
+  .faq-item{
+    background:var(--white);
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .faq-q{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 26px;
+    cursor:pointer;
+    font-weight:700;
+    color:var(--blue-deep);
+    font-size:16.5px;
+  }
+  .faq-q .plus{
+    flex:none;
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--bg);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;
+    color:var(--teal-dark);
+    transition:transform .3s ease;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);background:var(--teal);color:#fff;}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .35s ease, padding .35s ease;
+    padding:0 26px;
+    color:var(--muted);
+    font-size:15.5px;
+  }
+  .faq-item.open .faq-a{max-height:260px;padding:0 26px 22px;}
+
+  /* Reviews */
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .review-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    box-shadow:var(--shadow);
+  }
+  .stars{color:var(--accent);font-size:18px;margin-bottom:14px;letter-spacing:2px;}
+  .review-card p{color:var(--ink);font-size:15px;margin-bottom:20px;font-style:italic;}
+  .review-author{display:flex;align-items:center;gap:12px;}
+  .review-avatar{
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-weight:800;font-size:16px;
+  }
+  .review-author b{display:block;font-size:14.5px;color:var(--blue-deep);}
+  .review-author span{font-size:13px;color:var(--muted);}
+
+  /* Contact form */
+  .contact{
+    background:linear-gradient(135deg,var(--blue-deep),var(--teal-dark));
+    color:#fff;
+  }
+  .contact h2, .contact .section-sub{color:#fff;}
+  .contact .section-sub{color:rgba(255,255,255,0.85);}
+  .contact-wrap{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    max-width:980px;
+    margin:0 auto;
+  }
+  .contact-form{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.2);
+    border-radius:var(--radius);
+    padding:36px;
+    backdrop-filter:blur(8px);
+  }
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:14px;margin-bottom:8px;color:rgba(255,255,255,0.9);}
+  .form-group input{
+    width:100%;
+    padding:14px 16px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.3);
+    background:rgba(255,255,255,0.95);
+    font-size:15px;
+    color:var(--ink);
+  }
+  .form-group input:focus{outline:2px solid var(--accent);}
+  .form-actions{display:flex;flex-direction:column;gap:12px;margin-top:26px;}
+  .contact-direct h3{font-size:24px;margin-bottom:16px;}
+  .contact-direct p{color:rgba(255,255,255,0.88);margin-bottom:28px;font-size:15.5px;}
+  .contact-info-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+    background:rgba(255,255,255,0.08);
+    padding:16px 18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,0.15);
+  }
+  .contact-info-item .icon-circle{background:rgba(255,255,255,0.18);}
+  .contact-info-item b{display:block;font-size:15px;}
+  .contact-info-item span{font-size:14px;color:rgba(255,255,255,0.8);}
+  #form-msg{
+    margin-top:14px;
+    font-size:14px;
+    padding:12px 14px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.15);
+    display:none;
+  }
+
+  /* Final CTA banner */
+  .final-cta{
+    text-align:center;
+    padding:70px 0;
+    background:linear-gradient(135deg,var(--accent),#ff9a3c);
+    color:#3a2600;
+  }
+  .final-cta h2{color:#3a2600;font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+  .final-cta p{font-size:17px;margin-bottom:30px;opacity:.9;}
+  .final-cta .btn-primary{background:var(--blue-deep);box-shadow:0 10px 25px rgba(5,58,95,0.35);}
+
+  /* Footer */
+  footer{
+    background:var(--blue-deep);
+    color:rgba(255,255,255,0.85);
+    padding:50px 0 26px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-bottom:30px;
+  }
+  .footer-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-logo span{color:var(--teal);}
+  .footer-col h5{color:#fff;font-size:15px;margin-bottom:14px;}
+  .footer-col a{display:block;margin-bottom:10px;font-size:14.5px;color:rgba(255,255,255,0.8);}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:20px;
+    text-align:center;
+    font-size:13.5px;
+    color:rgba(255,255,255,0.6);
+  }
+
+  /* Floating action buttons (Instagram, WhatsApp) */
+  .float-actions{
+    position:fixed;
+    bottom:26px;right:26px;
+    z-index:950;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+  .float-btn{
+    width:62px;height:62px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    animation:pulse 2.4s infinite;
+  }
+  .float-btn svg{width:30px;height:30px;fill:#fff;}
+  .float-ig{
+    background:linear-gradient(135deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
+    box-shadow:0 12px 28px rgba(214,41,118,0.45);
+    --pulse-color:rgba(214,41,118,0.5);
+  }
+  .float-wa{
+    background:#25D366;
+    box-shadow:0 12px 28px rgba(37,211,102,0.45);
+    --pulse-color:rgba(37,211,102,0.5);
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 var(--pulse-color,rgba(5,58,95,0.5));}
+    70%{box-shadow:0 0 0 16px rgba(5,58,95,0);}
+    100%{box-shadow:0 0 0 0 rgba(5,58,95,0);}
+  }
+
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media(max-width:980px){
+    .about-grid, .why-me, .contact-wrap{grid-template-columns:1fr;}
+    .cards-grid{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .lifestyle-grid{grid-template-columns:repeat(2,1fr);}
+    .dest-grid{grid-template-columns:1fr;}
+    .video-grid{grid-template-columns:1fr;}
+    .benefit-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);}
+    .reviews-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}
+    .gallery-grid .g1{grid-column:span 2;grid-row:span 1;}
+  }
+  @media(max-width:600px){
+    section{padding:60px 0;}
+    .nav-cta .btn span{display:none;}
+    .cards-grid{grid-template-columns:1fr;}
+    .stats-grid{grid-template-columns:1fr;}
+    .lifestyle-grid{grid-template-columns:1fr;}
+    .benefit-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .hero{padding:150px 0 80px;}
+    .hero-stats{gap:26px;}
+    .footer-inner{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">In<span>Cruises</span></div>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-outline"><span>Узнать больше</span></a>
+      <a href="tel:+77473833142" class="btn btn-primary"><span>Позвонить</span> 📞</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="hero">
+  <div class="container hero-inner">
+    <div class="badge">Клуб путешествий · часть inGroup International</div>
+    <h1>Начни жить сейчас</h1>
+    <p>Путешествуй по нескольким странам за одну поездку — Средиземноморье, Карибы, Северная Европа — и оплачивай часть каждой следующей поездки баллами, которые копятся автоматически. Путешествия доступны каждому.</p>
+    <div class="hero-actions">
+      <a href="#about" class="btn btn-accent">Узнать больше ↓</a>
+      <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:#fff;color:#fff;">Написать в Instagram</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>17%</b><span>скидка сразу</span></div>
+      <div class="hero-stat"><b>2:1</b><span>баллы за каждый $1</span></div>
+      <div class="hero-stat"><b>4-6</b><span>стран за 1 поездку</span></div>
+      <div class="hero-stat"><b>3</b><span>тарифа под бюджет</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="stats" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Реальные цифры</h2>
+    <p class="section-sub reveal">InCruises — это не просто идея, а работающая международная сеть с реальными результатами.</p>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="icon-circle">🌐</div>
+        <div class="stat-number">1,6 млн+</div>
+        <div class="stat-label">участников по всему миру</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🗺️</div>
+        <div class="stat-number">200+</div>
+        <div class="stat-label">стран</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🛳️</div>
+        <div class="stat-number">700 000+</div>
+        <div class="stat-label">поездок забронировано с 2016 года</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">📈</div>
+        <div class="stat-number">50 000+</div>
+        <div class="stat-label">пассажиров только за первые месяцы 2026 года</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2 class="reveal">Что такое InCruises</h2>
+    <p class="section-sub reveal">Клуб-подписка на путешествия: круизы, отели и туры со скидками. Не теряй время на сомнения — система работает просто и прозрачно.</p>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <ul class="about-points">
+          <li>
+            <div class="icon-circle">💳</div>
+            <div>
+              <h4>Мгновенная скидка 17%</h4>
+              <p>Активные участники клуба сразу получают скидку 17% на круизы, отели и туры — экономия начинается с первого бронирования.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">⭐</div>
+            <div>
+              <h4>Reward Points</h4>
+              <p>2 балла за каждый потраченный $1. Баллы копятся и снижают стоимость будущих поездок — чем больше путешествуешь, тем выгоднее становится.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">🌍</div>
+            <div>
+              <h4>Несколько стран за одну поездку</h4>
+              <p>Многие круизные маршруты проходят сразу через несколько стран — за один круиз можно посетить 4-6 стран без отдельных виз и перелётов.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">🎯</div>
+            <div>
+              <h4>Тариф под любой бюджет</h4>
+              <p>Starter, Classic и Premium — выбирай уровень членства, который комфортен именно тебе.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="about-visual reveal">
+        <div class="big-number">17%</div>
+        <div class="big-label">скидка сразу на круизы, отели и туры</div>
+        <hr>
+        <div class="points-formula">
+          <div class="tag">$1 потрачен</div>
+          <span class="op">=</span>
+          <div class="tag">2 балла</div>
+        </div>
+        <div class="big-label" style="margin-top:14px;">Баллы оплачивают часть следующей поездки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="everyone" id="everyone">
+  <div class="container">
+    <h2 class="reveal">Это доступно каждому</h2>
+    <p class="section-sub reveal">Путешествия доступны каждому — это не привилегия только для состоятельных людей. Система баллов и гибкие тарифы делают море, острова и новые страны реальностью для любой семьи.</p>
+    <div class="cards-grid">
+      <div class="info-card reveal">
+        <div class="icon-circle">👩‍👧‍👦</div>
+        <h3>Многодетные семьи</h3>
+        <p>Мама с несколькими детьми может позволить себе полноценный отдых всей семьёй, накапливая и используя баллы, а также выбирая тариф по бюджету.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🧓</div>
+        <h3>Пожилые путешественники</h3>
+        <p>Современные лайнеры адаптированы под нужды старшего возраста — комфортные каюты, медицинская поддержка на борту и неспешный ритм поездки.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">👩‍👧</div>
+        <h3>Мамы-одиночки</h3>
+        <p>Накопленные баллы и скидка 17% позволяют съездить с детьми в путешествие без больших расходов — отдых становится реально достижимым.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">♿</div>
+        <h3>Люди с инвалидностью</h3>
+        <p>Лайнеры оборудованы пандусами, лифтами и доступными каютами — комфортное путешествие возможно для каждого, независимо от физических возможностей.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🚀</div>
+        <h3>Молодые и уверенные в себе</h3>
+        <p>Не нужно ждать «подходящего момента» — начать зарабатывать и путешествовать можно уже сейчас. Никакого стартового капитала или опыта в бизнесе, всё можно совмещать с учёбой или основной работой.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">✨</div>
+        <h3>Поколение свободы</h3>
+        <p>Дерзкие, перспективные, независимые — те, кто сам выбирает свой путь. Пока другие только сомневаются, ты уже строишь жизнь, где путешествия и доход идут рука об руку.</p>
+      </div>
+    </div>
+    <div class="about-card reveal" style="margin-top:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+      <div class="icon-circle" style="font-size:26px;">🗣️</div>
+      <div>
+        <h4 style="color:var(--blue-deep);font-size:18px;margin-bottom:4px;">Незнание языка — не проблема</h4>
+        <p style="color:var(--muted);">На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение и комфорт гарантированы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations">
+  <div class="container">
+    <h2 class="reveal">Куда можно поехать</h2>
+    <p class="section-sub reveal">Присоединяйся к тем, кто уже выбрал свободу — и открывай сразу несколько стран за одну поездку.</p>
+    <div class="dest-grid">
+      <div class="dest-card reveal">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+             alt="Средиземное море: Италия, Греция, Испания" loading="lazy">
+        <div class="dest-content">
+          <h3>Средиземное море</h3>
+          <p>Италия, Греция, Испания — за одну поездку, без отдельных перелётов между странами.</p>
+        </div>
+      </div>
+      <div class="dest-card reveal">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>';"
+             alt="Карибы: несколько островов сразу" loading="lazy">
+        <div class="dest-content">
+          <h3>Карибы</h3>
+          <p>Несколько живописных островов в одном маршруте — тропический рай без лишних хлопот.</p>
+        </div>
+      </div>
+      <div class="dest-card reveal">
+        <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>';"
+             alt="Северная Европа: Норвегия, Дания, Швеция" loading="lazy">
+        <div class="dest-content">
+          <h3>Северная Европа</h3>
+          <p>Норвегия, Дания, Швеция — фьорды и скандинавские города в одном путешествии.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="my-videos">
+  <div class="container">
+    <h2 class="reveal">Смотри сам, как это выглядит</h2>
+    <p class="section-sub reveal">Реальные кадры с моих поездок — нажми на видео, чтобы посмотреть со звуком.</p>
+    <div class="video-grid">
+      <div class="video-card reveal" data-video="video1.mp4">
+        <video poster="images/video1-poster.jpg" preload="none" muted playsinline>
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      </div>
+      <div class="video-card reveal" data-video="video2.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>" preload="none" muted playsinline>
+          <source src="video2.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      </div>
+      <div class="video-card reveal" data-video="video3.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23046380%22/></svg>" preload="none" muted playsinline>
+          <source src="video3.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      </div>
+      <div class="video-card reveal" data-video="video4.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>" preload="none" muted playsinline>
+          <source src="video4.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="more-than-travel" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Это не просто путешествие</h2>
+    <p class="section-sub reveal">InCruises — это про жизнь на борту: события, знакомства, отдых и комфорт для каждого.</p>
+    <div class="lifestyle-grid">
+      <div class="info-card reveal">
+        <div class="icon-circle">💍</div>
+        <h3>Свадьбы и торжества на лайнере</h3>
+        <p>Многие круизные компании предлагают услуги для свадебных церемоний прямо на борту.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🤝</div>
+        <h3>Знакомства и новые связи</h3>
+        <p>На лайнере тысячи людей со всего мира — отличная возможность расширить круг общения, в том числе для тех, кто в поиске второй половинки.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🏋️</div>
+        <h3>Разные виды активностей</h3>
+        <p>От спортзалов и бассейнов до скалодромов, танцев, шоу и мастер-классов — каждый найдёт себе занятие.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🌅</div>
+        <h3>Каюты с балконом</h3>
+        <p>Доступны на большинстве лайнеров — вид на океан прямо из своей каюты.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🎈</div>
+        <h3>Развлечения для любого возраста</h3>
+        <p>От детских клубов до вечеринок для взрослых и спокойного отдыха для пожилых пар.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🍽️</div>
+        <h3>Питание включено</h3>
+        <p>Большинство лайнеров предлагают шведский стол и рестораны без доплаты.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="icon-circle">🕌</div>
+        <h3>Для мусульман</h3>
+        <p>Многие крупные лайнеры оборудуют молитвенные комнаты и предлагают халяльное меню (уточняется на конкретном рейсе).</p>
+      </div>
+    </div>
+    <p class="fine-print reveal">Наличие удобств зависит от конкретного лайнера и маршрута</p>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="container">
+    <h2 class="reveal">Выгоды</h2>
+    <p class="section-sub reveal">Всё, что делает членство в клубе реально выгодным.</p>
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="emoji">💥</div>
+        <h4>Скидка 17% сразу</h4>
+        <p>На круизы, отели и туры для активных участников.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">⭐</div>
+        <h4>Баллы 2 к 1</h4>
+        <p>2 балла за каждый потраченный $1 — экономия на будущих поездках.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">🎚️</div>
+        <h4>Три тарифа</h4>
+        <p>Starter, Classic, Premium — под любой бюджет.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">🗺️</div>
+        <h4>Несколько стран сразу</h4>
+        <p>Один круиз — 4-6 стран без лишних виз и перелётов.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">🤝</div>
+        <h4>Заработок на рекомендациях</h4>
+        <p>Партнёрская программа — доход за приглашённых людей.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-me">
+  <div class="container why-me">
+    <div class="why-photo reveal">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+           alt="Команда партнёров InCruises" loading="lazy">
+      <div class="why-badge">Тысячи отзывов ⭐ на Trustpilot и Google</div>
+    </div>
+    <div class="reveal">
+      <h2 style="text-align:left;">Почему именно я</h2>
+      <p class="section-sub" style="text-align:left;margin:0 0 32px;">Мы — весёлая и позитивная команда, которая по-настоящему любит путешествия и людей.</p>
+      <ul class="why-list">
+        <li>
+          <div class="icon-circle">🤗</div>
+          <div>
+            <h4>Поддержка на каждом шаге</h4>
+            <p>От выбора тарифа до первой поездки — я рядом и отвечаю на все вопросы.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">🧩</div>
+          <div>
+            <h4>Вместе разбираем ошибки</h4>
+            <p>Если что-то пошло не так — решаем вместе, без лишнего стресса и давления.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">🎉</div>
+          <div>
+            <h4>Встречи и корпоративы</h4>
+            <p>Регулярные встречи команды и мероприятия — это не только бизнес, но и настоящая дружная атмосфера.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="why-signature">Твой партнёр — <b>Кульсум</b>. Присоединяйся к тем, кто уже выбрал свободу.</div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <h2 class="reveal">Как это работает</h2>
+    <p class="section-sub reveal">Четыре простых шага от знакомства до поездки со скидкой.</p>
+    <div class="steps">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h4>Выбор тарифа</h4>
+        <p>Starter, Classic или Premium — исходя из бюджета и целей.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h4>Регистрация</h4>
+        <p>Оформляем членство в клубе быстро и без лишней бюрократии.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h4>Накопление баллов</h4>
+        <p>2 балла за каждый потраченный $1 — баллы копятся автоматически.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h4>Поездка со скидкой</h4>
+        <p>Бронируешь круиз, отель или тур со скидкой 17% и баллами.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="container">
+    <h2 class="reveal">Смотри и убедись сам</h2>
+    <p class="section-sub reveal">Официальное видео InCruises о том, как работает клуб.</p>
+    <div class="video-wrap reveal">
+      <iframe src="https://www.youtube.com/embed/0BmXkJQp1W4" title="InCruises — официальная презентация" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <p class="video-caption reveal">Официальная презентация InCruises</p>
+  </div>
+</section>
+
+<section id="gallery" style="background:linear-gradient(180deg,var(--bg) 0%, #eef8fb 100%);">
+  <div class="container">
+    <h2 class="reveal">Наши путешественники</h2>
+    <p class="section-sub reveal">Разного возраста, из разных стран — путешествия доступны каждому.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item g1 reveal">
+        <img src="https://images.unsplash.com/photo-1548574505-5e239809ee19?auto=format&fit=crop&w=1000&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+             alt="Круизный лайнер в море" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1602867741746-6df80f40b3e8?auto=format&fit=crop&w=600&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>';"
+             alt="Семья с детьми в путешествии" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1499363536502-87642509e31b?auto=format&fit=crop&w=600&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>';"
+             alt="Пожилая пара на отдыхе" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23046380%22/></svg>';"
+             alt="Соло-путешественница" loading="lazy">
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+             alt="Друзья на палубе лайнера" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2 class="reveal">Частые вопросы</h2>
+    <p class="section-sub reveal">Не теряй время на сомнения — вот честные ответы.</p>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">Сколько это стоит? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Есть три тарифа — Starter, Classic и Premium — под разный бюджет. Точную стоимость и условия каждого тарифа я подробно расскажу лично, напиши мне в Instagram или позвони.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Можно ли отменить членство? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Да, условия членства гибкие. Все детали и порядок отмены я объясню при регистрации, чтобы ты точно понимал(а), на что подписываешься.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Подойдёт ли это пожилым родителям? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Да. Современные лайнеры адаптированы под комфорт старшего возраста, а на борту всегда доступна поддержка персонала — путешествие будет спокойным и приятным.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Нужно ли знать иностранный язык? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Нет. На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение никогда не станет проблемой.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">С чего начать? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Просто напиши мне в Instagram kyl.sum.m или позвони по телефону +7 747 383 3142 — я подберу тариф и отвечу на все вопросы лично.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" style="background:linear-gradient(180deg,var(--bg) 0%, #eef8fb 100%);">
+  <div class="container">
+    <h2 class="reveal">Отзывы</h2>
+    <p class="section-sub reveal">Тысячи положительных отзывов на Trustpilot и Google — вот несколько примеров.</p>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Давно хотели путешествовать всей семьёй, но казалось, что это дорого. Система баллов реально помогла спланировать первую поездку без стресса для бюджета.»</p>
+        <div class="review-author">
+          <div class="review-avatar">А</div>
+          <div><b>Алия</b><span>участница клуба</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Понравилось, что за один круиз посетили сразу несколько стран — не нужно было отдельно оформлять визы и билеты на перелёты. Очень удобно.»</p>
+        <div class="review-author">
+          <div class="review-avatar">Д</div>
+          <div><b>Дамир</b><span>участник клуба</span></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>«Ездили с родителями пожилого возраста — на лайнере было очень комфортно, персонал внимательный. Обязательно поедем ещё раз.»</p>
+        <div class="review-author">
+          <div class="review-avatar">М</div>
+          <div><b>Мария</b><span>участница клуба</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <h2 class="reveal">Присоединяйся к тем, кто уже выбрал свободу</h2>
+    <p class="section-sub reveal">Оставь заявку — я свяжусь с тобой и подберу подходящий тариф.</p>
+    <div class="contact-wrap">
+      <div class="contact-form reveal">
+        <form id="leadForm">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 ___ ___ __ __" required>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-accent">Отправить заявку</button>
+            <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="btn btn-primary btn-instagram">Написать в Instagram 📷</a>
+            <a href="https://wa.me/qr/CHCSSQCTIBSPF1" target="_blank" rel="noopener" class="btn btn-whatsapp">Написать в WhatsApp 💬</a>
+            <a href="tel:+77473833142" class="btn btn-outline btn-call" style="border-color:#fff;color:#fff;">Позвонить Кульсум 📞</a>
+          </div>
+          <div id="form-msg"></div>
+        </form>
+      </div>
+      <div class="contact-direct reveal">
+        <h3>Свяжись напрямую</h3>
+        <p>Не теряй время на сомнения — напиши или позвони прямо сейчас, и я отвечу на все твои вопросы об InCruises.</p>
+        <div class="contact-info-item">
+          <div class="icon-circle">📷</div>
+          <div><b>Instagram</b><span>kyl.sum.m</span></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="icon-circle">📞</div>
+          <div><b>Кульсум</b><span>+7 747 383 3142</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Начни жить сейчас</h2>
+    <p>Путешествия доступны каждому — присоединяйся к тем, кто уже выбрал свободу.</p>
+    <a href="#contact" class="btn btn-primary">Узнать больше</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">In<span>Cruises</span></div>
+        <p style="max-width:280px;font-size:14px;color:rgba(255,255,255,0.7);">Клуб путешествий по подписке. Часть inGroup International.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Партнёр</h5>
+        <a href="tel:+77473833142">Кульсум</a>
+        <a href="tel:+77473833142">+7 747 383 3142</a>
+        <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener">Instagram: kyl.sum.m</a>
+      </div>
+      <div class="footer-col">
+        <h5>Разделы</h5>
+        <a href="#about">Что такое InCruises</a>
+        <a href="#benefits">Выгоды</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Контакты</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 InCruises — независимый партнёр Кульсум. Все права на бренд InCruises принадлежат inGroup International.
+    </div>
+  </div>
+</footer>
+
+<div class="video-lightbox" id="videoLightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Закрыть видео">✕</button>
+  <video id="lightboxVideo" controls playsinline></video>
+</div>
+
+<div class="float-actions">
+  <a href="https://wa.me/qr/CHCSSQCTIBSPF1" target="_blank" rel="noopener" class="float-btn float-wa" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.981.579 3.826 1.578 5.379L2 22l4.769-1.545A9.953 9.953 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.2c-1.729 0-3.336-.507-4.687-1.379l-.336-.213-3.147.996 1.02-3.045-.219-.351A8.19 8.19 0 0 1 3.8 12c0-4.526 3.675-8.2 8.201-8.2 4.525 0 8.199 3.674 8.199 8.2 0 4.526-3.674 8.2-8.199 8.2zm4.522-6.148c-.248-.124-1.463-.722-1.69-.805-.227-.083-.392-.124-.557.124-.164.248-.639.805-.782.971-.144.165-.289.186-.536.062-.248-.124-1.046-.385-1.991-1.229-.736-.657-1.233-1.468-1.377-1.716-.144-.248-.015-.382.108-.505.112-.111.248-.289.372-.434.124-.144.165-.248.248-.413.083-.165.041-.31-.021-.434-.062-.124-.557-1.343-.763-1.839-.201-.483-.406-.417-.557-.425-.144-.006-.31-.008-.475-.008-.165 0-.434.062-.66.31-.227.248-.867.847-.867 2.066 0 1.219.887 2.397 1.011 2.562.124.165 1.747 2.668 4.234 3.74.591.255 1.052.408 1.412.522.593.189 1.133.162 1.56.098.476-.071 1.463-.598 1.669-1.176.207-.579.207-1.075.144-1.176-.062-.104-.227-.165-.475-.289z"/></svg>
+  </a>
+  <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="float-btn float-ig" aria-label="Написать в Instagram">
+    <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 5 5C22 8.6 22 9 22 12.2s0 3.6-.07 4.9c-.15 3.3-1.7 4.8-5 5-1.3.07-1.7.07-4.93.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-5-5C2 15.8 2 15.4 2 12.2s0-3.6.07-4.9c.15-3.3 1.7-4.85 5-5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5 0-4.75.07-2.44.1-3.58 1.26-3.68 3.68C3.5 8.7 3.5 9.06 3.5 12s0 3.3.07 4.25c.1 2.42 1.24 3.58 3.68 3.68C8.5 20 8.86 20 12 20s3.5 0 4.75-.07c2.44-.1 3.58-1.26 3.68-3.68.07-.95.07-1.31.07-4.25s0-3.3-.07-4.25c-.1-2.42-1.25-3.58-3.68-3.68C15.5 4 15.14 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.86-2a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z"/></svg>
+  </a>
+</div>
+
+<script>
+  // Scroll-reveal animation
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => o.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Trip videos lightbox
+  const lightbox = document.getElementById('videoLightbox');
+  const lightboxVideo = document.getElementById('lightboxVideo');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openVideoLightbox(src){
+    lightboxVideo.src = src;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lightboxVideo.muted = false;
+    lightboxVideo.play().catch(() => {});
+  }
+  function closeVideoLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+    lightboxVideo.pause();
+    lightboxVideo.removeAttribute('src');
+    lightboxVideo.load();
+  }
+  document.querySelectorAll('.video-card').forEach(card => {
+    card.addEventListener('click', () => openVideoLightbox(card.dataset.video));
+  });
+  lightboxClose.addEventListener('click', closeVideoLightbox);
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeVideoLightbox(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('open')) closeVideoLightbox(); });
+
+  // Lead form -> redirect to Instagram DM with prefilled note
+  const form = document.getElementById('leadForm');
+  const msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    msg.style.display = 'block';
+    msg.textContent = `Спасибо, ${name}! Заявка получена. Напишите Кульсум в Instagram (kyl.sum.m) или ждите звонка на номер ${phone}.`;
+    form.reset();
+    setTimeout(() => { window.open('https://instagram.com/kyl.sum.m', '_blank'); }, 1200);
+  });
+</script>
+
+</body>
+</html>
