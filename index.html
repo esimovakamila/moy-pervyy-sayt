@@ -126,6 +126,19 @@
   }
   .btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(37,211,102,0.5);}
 
+  /* Micro-commitments: quiet, low-pressure links between emotional blocks */
+  .micro-cta{
+    display:block;
+    text-align:center;
+    margin-top:40px;
+    font-size:15.5px;
+    font-weight:600;
+    color:var(--teal-dark);
+    transition:color .2s ease;
+  }
+  .micro-cta:hover{color:var(--sunset-dark);}
+  .micro-cta::after{content:" →";}
+
   /* Header */
   header{
     position:fixed;
@@ -154,69 +167,54 @@
   .nav-cta{display:flex;gap:10px;}
   .nav-cta .btn{padding:10px 22px;font-size:14px;}
 
-  /* Hero */
+  /* Hero — atmosphere first, minimal text */
   .hero{
     position:relative;
-    padding:180px 0 120px;
+    min-height:92vh;
+    display:flex;
+    align-items:center;
+    padding:170px 0 100px;
     background-image:
       radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 40%),
-      linear-gradient(135deg, rgba(18,73,90,0.88) 0%, rgba(27,122,140,0.85) 50%, rgba(232,137,106,0.8) 100%),
+      linear-gradient(135deg, rgba(18,73,90,0.7) 0%, rgba(27,122,140,0.55) 50%, rgba(232,137,106,0.55) 100%),
       var(--HERO_BG_IMAGE);
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
     color:#fff;
     overflow:hidden;
-  }
-  .hero::before{
-    content:"";
-    position:absolute;
-    width:600px;height:600px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.06);
-    top:-200px;right:-150px;
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    width:400px;height:400px;
-    border-radius:50%;
-    background:rgba(212,175,122,0.18);
-    bottom:-150px;left:-100px;
+    width:100%;
   }
   .hero-inner{
     position:relative;
     z-index:2;
     text-align:center;
-    max-width:820px;
+    max-width:780px;
     margin:0 auto;
   }
   .hero h1{
-    font-size:clamp(36px,6vw,64px);
-    margin-bottom:22px;
+    font-size:clamp(34px,5.6vw,58px);
+    margin-bottom:20px;
     letter-spacing:-0.02em;
+    text-shadow:0 4px 24px rgba(0,0,0,0.25);
   }
   .hero p{
-    font-size:clamp(17px,2.2vw,21px);
+    font-size:clamp(16px,2vw,19px);
     color:rgba(255,255,255,0.92);
-    max-width:620px;
-    margin:0 auto 38px;
+    max-width:560px;
+    margin:0 auto 36px;
+    text-shadow:0 2px 12px rgba(0,0,0,0.2);
   }
-  .hero-actions{
-    display:flex;
-    gap:16px;
-    justify-content:center;
-    flex-wrap:wrap;
+
+  /* Immersion scenes */
+  .scene-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:24px;
   }
-  .hero-stats{
-    display:flex;
-    justify-content:center;
-    gap:44px;
-    margin-top:64px;
-    flex-wrap:wrap;
-  }
-  .hero-stat b{display:block;font-size:30px;font-weight:800;}
-  .hero-stat span{font-size:14px;color:rgba(255,255,255,0.8);}
+  .scene-card{height:340px;}
+  .scene-content h3{font-size:19px;margin-bottom:6px;}
+  .scene-content p{font-size:14px;color:rgba(255,255,255,0.88);max-width:420px;}
 
   /* Transparency / how the club works */
   .about-grid{
@@ -520,7 +518,7 @@
   .benefit-card h4{font-size:16px;margin-bottom:8px;}
   .benefit-card p{font-size:13.5px;color:rgba(255,255,255,0.85);}
 
-  /* Why me */
+  /* Why me — personal brand */
   .why-me{
     display:grid;
     grid-template-columns:0.9fr 1.1fr;
@@ -532,7 +530,7 @@
     overflow:hidden;
     box-shadow:var(--shadow-lg);
     position:relative;
-    height:420px;
+    height:460px;
   }
   .why-photo img{width:100%;height:100%;object-fit:cover;}
   .why-badge{
@@ -843,6 +841,7 @@
     .stats-grid{grid-template-columns:repeat(2,1fr);}
     .lifestyle-grid{grid-template-columns:repeat(2,1fr);}
     .dest-grid{grid-template-columns:1fr;}
+    .scene-grid{grid-template-columns:1fr;}
     .video-grid{grid-template-columns:1fr;}
     .benefit-grid{grid-template-columns:repeat(2,1fr);}
     .journey-grid{grid-template-columns:repeat(2,1fr);}
@@ -860,8 +859,7 @@
     .benefit-grid{grid-template-columns:1fr;}
     .journey-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
-    .hero{padding:150px 0 80px;}
-    .hero-stats{gap:26px;}
+    .hero{padding:150px 0 80px;min-height:auto;}
     .footer-inner{flex-direction:column;}
     .partner-card{padding:32px 24px;}
   }
@@ -881,25 +879,61 @@
 
 <section class="hero" id="hero">
   <div class="container hero-inner">
-    <div class="badge">Клубная программа путешествий · inGroup International</div>
-    <h1>Круизы и туры по всему миру — со скидкой 17%</h1>
-    <p>От тёплого Средиземноморья до ледников Антарктиды: бронируй круизы, отели и туры с мгновенной скидкой и бонусами, которые снижают стоимость каждой следующей поездки.</p>
-    <div class="hero-actions">
-      <a href="#destinations" class="btn btn-accent">Смотреть направления ↓</a>
-      <a href="#" data-contact="instagram" target="_blank" class="btn btn-outline" style="border-color:#fff;color:#fff;">Написать в Instagram</a>
+    <h1>Просыпаться под шум океана каждое утро — это не мечта, а маршрут.</h1>
+    <p>Средиземноморье, Карибы, Северная Европа, Антарктида — выбирай, куда сбежать первым.</p>
+    <a href="#scenes" class="btn btn-accent">Смотреть маршруты ↓</a>
+  </div>
+</section>
+
+<section id="scenes">
+  <div class="container">
+    <h2 class="reveal">Ты уже почти там</h2>
+    <div class="scene-grid">
+      <div class="dest-card scene-card reveal">
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2312495A%22/></svg>';"
+             alt="Ужин при свечах на верхней палубе" loading="lazy">
+        <div class="dest-content scene-content">
+          <h3>Ужин при свечах на верхней палубе</h3>
+          <p>Солёный воздух, тихий джаз и бокал вина — а горизонт медленно розовеет над водой.</p>
+        </div>
+      </div>
+      <div class="dest-card scene-card reveal">
+        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2317667A%22/></svg>';"
+             alt="Утренний кофе с видом на новый порт" loading="lazy">
+        <div class="dest-content scene-content">
+          <h3>Утренний кофе с видом на новый порт</h3>
+          <p>Просыпаешься — а за окном уже другая страна. Кофе на балконе, внизу просыпается город, которого вчера ещё не было в твоей жизни.</p>
+        </div>
+      </div>
+      <div class="dest-card scene-card reveal">
+        <img src="https://images.unsplash.com/photo-1476673160081-cf065607f449?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%231B7A8C%22/></svg>';"
+             alt="Заснуть под звёздами посреди океана" loading="lazy">
+        <div class="dest-content scene-content">
+          <h3>Заснуть под звёздами посреди океана</h3>
+          <p>Ни огней, ни шума города — только млечный путь и мерное покачивание волны.</p>
+        </div>
+      </div>
+      <div class="dest-card scene-card reveal">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%235B7C8D%22/></svg>';"
+             alt="Балконная дверь и бирюзовая вода Карибского моря" loading="lazy">
+        <div class="dest-content scene-content">
+          <h3>Открываешь дверь на балкон</h3>
+          <p>И первое, что видишь, — бирюзовая вода Карибского моря прямо под ногами.</p>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><b>17%</b><span>скидка сразу</span></div>
-      <div class="hero-stat"><b>4-6</b><span>стран за 1 поездку</span></div>
-      <div class="hero-stat"><b>4</b><span>направления на выбор</span></div>
-    </div>
+    <a href="#destinations" class="micro-cta">Посмотреть маршрут</a>
   </div>
 </section>
 
 <section id="destinations">
   <div class="container">
-    <h2 class="reveal">Куда можно поехать</h2>
-    <p class="section-sub reveal">Каждое направление — это готовый маршрут на несколько стран или целый континент за одну поездку.</p>
+    <h2 class="reveal">Куда сбежать первым?</h2>
+    <p class="section-sub reveal">Каждое направление — уже готовый сценарий. Выбирай тот, что откликается сильнее всего.</p>
     <div class="dest-grid">
       <div class="dest-card reveal">
         <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80"
@@ -938,6 +972,7 @@
         </div>
       </div>
     </div>
+    <a href="#contact" class="micro-cta">Узнать, сколько будет стоить твой круиз</a>
   </div>
 </section>
 
@@ -1100,6 +1135,82 @@
   </div>
 </section>
 
+<section id="why-me">
+  <div class="container why-me">
+    <div class="why-photo reveal">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+           alt="Кульсум, партнёр InCruises" loading="lazy">
+      <div class="why-badge">Отзывы можно проверить на Trustpilot и Google</div>
+    </div>
+    <div class="reveal">
+      <h2 style="text-align:left;">Почему бронировать через меня</h2>
+      <p class="section-sub" style="text-align:left;margin:0 0 32px;">Клуб один и тот же у всех партнёров. Разница в том, кто ведёт тебя от первого сообщения до посадки на лайнер.</p>
+      <ul class="why-list">
+        <li>
+          <div class="icon-circle">💬</div>
+          <div>
+            <h4>Не бот и не колл-центр</h4>
+            <p>Всё, что происходит с твоей заявкой, проходит через меня лично — от первого сообщения до посадки на лайнер.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">🛂</div>
+          <div>
+            <h4>Виза и билеты — лично от меня</h4>
+            <p>Не передаю тебя стороннему отделу — сама помогаю с документами и билетами на каждом шаге.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">⚡</div>
+          <div>
+            <h4>Быстрый личный ответ</h4>
+            <p>Пишешь — отвечаю сама, без автоматических скриптов и очереди.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">🎯</div>
+          <div>
+            <h4>Маршрут под тебя, а не шаблон</h4>
+            <p>Учитываю бюджет, даты и то, что важно именно тебе в поездке — а не предлагаю первый попавшийся тур.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="why-signature">Хочешь обсудить свой маршрут? Пиши мне лично — <b>Кульсум</b>.</div>
+      <a href="#" data-contact="instagram" target="_blank" class="micro-cta">Написать мне про даты</a>
+    </div>
+  </div>
+</section>
+
+<section id="client-journey" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">От визы до возвращения — я рядом</h2>
+    <p class="section-sub reveal">Помогаю не только выбрать тур, но и подготовиться к поездке от начала до конца.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <div class="icon-circle">🛂</div>
+        <h4>Помощь с визой</h4>
+        <p>Собираю и проверяю документы, консультирую по срокам и требованиям посольства — минимум бюрократии на твоей стороне.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">✈️</div>
+        <h4>Билеты и трансфер</h4>
+        <p>Подбираю и бронирую авиабилеты, помогаю с трансфером до порта — логистика поездки полностью на мне.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🌏</div>
+        <h4>Культурный гид</h4>
+        <p>Разбираю культурные особенности страны назначения: как себя вести, что уместно, а что нет, какие традиции стоит уважать.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🧭</div>
+        <h4>Поддержка в пути</h4>
+        <p>Остаюсь на связи на протяжении всей поездки — от вылета до возвращения домой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="container">
     <h2 class="reveal">Как работает клуб</h2>
@@ -1178,35 +1289,6 @@
   </div>
 </section>
 
-<section id="client-journey" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
-  <div class="container">
-    <h2 class="reveal">От визы до возвращения — мы рядом</h2>
-    <p class="section-sub reveal">Помогаем не только выбрать тур, но и подготовиться к поездке от начала до конца.</p>
-    <div class="journey-grid">
-      <div class="journey-card reveal">
-        <div class="icon-circle">🛂</div>
-        <h4>Помощь с визой</h4>
-        <p>Собираем и проверяем документы, консультируем по срокам и требованиям посольства — минимум бюрократии на твоей стороне.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">✈️</div>
-        <h4>Билеты и трансфер</h4>
-        <p>Подбираем и бронируем авиабилеты, помогаем с трансфером до порта — логистика поездки полностью на нас.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">🌏</div>
-        <h4>Культурный гид</h4>
-        <p>Разбираем культурные особенности страны назначения: как себя вести, что уместно, а что нет, какие традиции стоит уважать.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">🧭</div>
-        <h4>Поддержка в пути</h4>
-        <p>Остаёмся на связи на протяжении всей поездки — от вылета до возвращения домой.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="benefits" id="benefits">
   <div class="container">
     <h2 class="reveal">Выгоды</h2>
@@ -1232,45 +1314,6 @@
         <h4>Несколько стран сразу</h4>
         <p>Один круиз — 4-6 стран без лишних виз и перелётов.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="why-me">
-  <div class="container why-me">
-    <div class="why-photo reveal">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
-           alt="Кульсум, партнёр InCruises" loading="lazy">
-      <div class="why-badge">Отзывы можно проверить на Trustpilot и Google</div>
-    </div>
-    <div class="reveal">
-      <h2 style="text-align:left;">Почему именно я</h2>
-      <p class="section-sub" style="text-align:left;margin:0 0 32px;">Разбираюсь в направлениях и условиях клуба, чтобы объяснить их тебе просто и честно.</p>
-      <ul class="why-list">
-        <li>
-          <div class="icon-circle">🤗</div>
-          <div>
-            <h4>Поддержка на каждом шаге</h4>
-            <p>От выбора тарифа до первой поездки — я рядом и отвечаю на все вопросы.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon-circle">🧩</div>
-          <div>
-            <h4>Вместе разбираем ошибки</h4>
-            <p>Если что-то пошло не так — решаем вместе, без лишнего стресса и давления.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon-circle">💬</div>
-          <div>
-            <h4>Честно и без спешки</h4>
-            <p>Отвечаю на вопросы столько, сколько нужно — никакого давления и искусственной срочности.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="why-signature">Твой персональный контакт — <b>Кульсум</b>. Всегда на связи, если понадобится помощь.</div>
     </div>
   </div>
 </section>
@@ -1376,8 +1419,8 @@
 
 <section class="contact" id="contact">
   <div class="container">
-    <h2 class="reveal">Готовы обсудить поездку?</h2>
-    <p class="section-sub reveal">Оставь заявку — отвечу с вариантами направлений и тарифов.</p>
+    <h2 class="reveal">Я лично помогу тебе выбрать первый круиз</h2>
+    <p class="section-sub reveal">От направления до визы. Напиши мне, расскажи, о чём мечтаешь, — и я подберу маршрут именно под тебя.</p>
     <div class="contact-wrap">
       <div class="contact-form reveal">
         <form id="leadForm">
@@ -1400,7 +1443,7 @@
       </div>
       <div class="contact-direct reveal">
         <h3>Свяжись напрямую</h3>
-        <p>Напиши или позвони, и я отвечу на все твои вопросы об InCruises.</p>
+        <p>Напиши или позвони — отвечаю лично, без бота и без очереди.</p>
         <div class="contact-info-item">
           <div class="icon-circle">📷</div>
           <div><b>Instagram</b><span data-contact-text="instagram">···</span></div>
@@ -1441,6 +1484,7 @@
       <div class="footer-col">
         <h5>Разделы</h5>
         <a href="#destinations">Направления</a>
+        <a href="#why-me">Почему через меня</a>
         <a href="#about">Как работает клуб</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Контакты</a>
@@ -1561,7 +1605,7 @@
           headers: {'Accept':'application/json', 'Content-Type':'application/json'},
           body: JSON.stringify({name, phone})
         });
-        msg.textContent = `Спасибо, ${name}! Заявка получена — мы свяжемся с вами в ближайшее время.`;
+        msg.textContent = `Спасибо, ${name}! Заявка получена — я свяжусь с вами в ближайшее время.`;
         form.reset();
         return;
       }catch(err){
@@ -1569,7 +1613,7 @@
       }
     }
 
-    msg.textContent = `Спасибо, ${name}! Заявка получена. Мы свяжемся с вами в Instagram или по телефону.`;
+    msg.textContent = `Спасибо, ${name}! Заявка получена. Я свяжусь с вами в Instagram или по телефону.`;
     form.reset();
     if(contacts.instagramUrl){
       setTimeout(() => { window.open(contacts.instagramUrl, '_blank', 'noopener'); }, 1200);
