@@ -5,30 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>InCruises — Путешествия по подписке | Начни жить сейчас</title>
 <meta name="description" content="InCruises — клуб путешествий по подписке. Скидка 17% сразу, накопительные баллы, круизы по нескольким странам за одну поездку. Присоединяйся к тем, кто уже выбрал свободу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    /* BENEFITS_BG_IMAGE — плейсхолдер, замените ссылку на своё фото (люди смеются на палубе круизного лайнера) */
+    /* HERO_BG_IMAGE / BENEFITS_BG_IMAGE — плейсхолдеры, замените на свои фото */
+    --HERO_BG_IMAGE: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1800&q=80');
     --BENEFITS_BG_IMAGE: url('https://images.unsplash.com/photo-1580541631950-7282082b53ce?auto=format&fit=crop&w=1600&q=80');
-    --teal:#0891a8;
-    --teal-dark:#046380;
-    --blue-deep:#053a5f;
-    --blue-mid:#0d5c8c;
-    --ink:#0b2436;
-    --muted:#5c7383;
-    --bg:#f4f9fb;
+
+    /* Travel palette: warm sand + ocean teal + sunset coral + muted gold */
+    --teal:#1B7A8C;
+    --teal-dark:#145E6D;
+    --blue-deep:#12495A;
+    --blue-mid:#17667A;
+    --sunset:#E8896A;
+    --sunset-dark:#D9714F;
+    --gold:#D4AF7A;
+    --ink:#2B2B2B;
+    --muted:#6B6459;
+    --bg:#FAF6F0;
     --white:#ffffff;
-    --accent:#ffb703;
-    --radius:18px;
-    --shadow:0 12px 30px rgba(5,58,95,0.12);
-    --shadow-lg:0 20px 50px rgba(5,58,95,0.18);
+    --accent:#E8896A;
+
+    --font-serif:'Playfair Display', Georgia, serif;
+    --font-sans:'Inter', 'Segoe UI', Roboto, sans-serif;
+
+    --radius:20px;
+    --radius-lg:28px;
+    --shadow:0 14px 40px rgba(18,73,90,0.10);
+    --shadow-lg:0 24px 60px rgba(18,73,90,0.16);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    font-family:var(--font-sans);
     color:var(--ink);
     background:var(--bg);
-    line-height:1.6;
+    line-height:1.65;
     overflow-x:hidden;
   }
   img{max-width:100%;display:block;}
@@ -40,15 +54,15 @@
     margin:0 auto;
     padding:0 24px;
   }
-  section{padding:88px 0;}
-  h1,h2,h3{line-height:1.2;font-weight:800;}
-  h2{font-size:clamp(28px,4vw,42px);color:var(--blue-deep);text-align:center;margin-bottom:16px;}
+  section{padding:104px 0;}
+  h1,h2,h3{line-height:1.15;font-weight:700;font-family:var(--font-serif);}
+  h2{font-size:clamp(30px,4.2vw,46px);color:var(--blue-deep);text-align:center;margin-bottom:18px;}
   .section-sub{
     text-align:center;
     color:var(--muted);
     font-size:18px;
     max-width:680px;
-    margin:0 auto 52px;
+    margin:0 auto 60px;
   }
   .badge{
     display:inline-block;
@@ -73,20 +87,20 @@
     font-size:17px;
     cursor:pointer;
     border:none;
-    transition:transform .2s ease, box-shadow .2s ease;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
   }
   .btn-primary{
     background:linear-gradient(135deg,var(--teal),var(--blue-mid));
     color:#fff;
-    box-shadow:0 10px 25px rgba(8,145,168,0.4);
+    box-shadow:0 10px 25px rgba(27,122,140,0.4);
   }
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(8,145,168,0.5);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(27,122,140,0.5);}
   .btn-accent{
     background:var(--accent);
-    color:#3a2600;
-    box-shadow:0 10px 25px rgba(255,183,3,0.4);
+    color:var(--ink);
+    box-shadow:0 10px 25px rgba(232,137,106,0.4);
   }
-  .btn-accent:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(255,183,3,0.5);}
+  .btn-accent:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(232,137,106,0.5);}
   .btn-outline{
     background:transparent;
     border:2px solid var(--teal);
@@ -106,9 +120,9 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:900;
-    background:rgba(255,255,255,0.92);
+    background:rgba(250,246,240,0.92);
     backdrop-filter:blur(10px);
-    box-shadow:0 2px 18px rgba(5,58,95,0.08);
+    box-shadow:0 2px 18px rgba(18,73,90,0.08);
   }
   .nav{
     display:flex;
@@ -119,8 +133,9 @@
     margin:0 auto;
   }
   .logo{
-    font-size:22px;
-    font-weight:800;
+    font-family:var(--font-serif);
+    font-size:23px;
+    font-weight:700;
     color:var(--blue-deep);
     letter-spacing:-0.02em;
   }
@@ -131,10 +146,14 @@
   /* Hero */
   .hero{
     position:relative;
-    padding:170px 0 110px;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.15), transparent 40%),
-      linear-gradient(135deg,var(--blue-deep) 0%, var(--blue-mid) 45%, var(--teal) 100%);
+    padding:180px 0 120px;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 40%),
+      linear-gradient(135deg, rgba(18,73,90,0.88) 0%, rgba(27,122,140,0.85) 50%, rgba(232,137,106,0.8) 100%),
+      var(--HERO_BG_IMAGE);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
     color:#fff;
     overflow:hidden;
   }
@@ -151,7 +170,7 @@
     position:absolute;
     width:400px;height:400px;
     border-radius:50%;
-    background:rgba(255,183,3,0.12);
+    background:rgba(212,175,122,0.18);
     bottom:-150px;left:-100px;
   }
   .hero-inner{
@@ -285,7 +304,7 @@
 
   /* Accessible for everyone */
   .everyone{
-    background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);
+    background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);
   }
   .cards-grid{
     display:grid;
@@ -307,17 +326,19 @@
   /* Destinations */
   .dest-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(2,1fr);
     gap:28px;
   }
   .dest-card{
     position:relative;
     border-radius:var(--radius);
     overflow:hidden;
-    height:340px;
+    height:400px;
     box-shadow:var(--shadow);
     isolation:isolate;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
   }
+  .dest-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
   .dest-card img{
     width:100%;height:100%;object-fit:cover;
     position:absolute;inset:0;
@@ -328,7 +349,7 @@
   .dest-card::before{
     content:"";
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(5,58,95,0) 30%, rgba(5,20,35,0.88) 100%);
+    background:linear-gradient(180deg, rgba(30,20,14,0) 15%, rgba(30,20,14,0.88) 100%);
     z-index:0;
   }
   .dest-content{
@@ -365,7 +386,7 @@
   .video-card::after{
     content:"";
     position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(5,58,95,0) 55%, rgba(5,20,35,0.55) 100%);
+    background:linear-gradient(180deg, rgba(30,20,14,0) 55%, rgba(30,20,14,0.55) 100%);
   }
   .play-btn{
     position:absolute;
@@ -376,18 +397,18 @@
     background:rgba(255,255,255,0.92);
     border:none;
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 24px rgba(5,58,95,0.4);
+    box-shadow:0 8px 24px rgba(18,73,90,0.4);
     font-size:22px;
     color:var(--blue-deep);
     z-index:1;
-    transition:transform .25s ease, background .25s ease;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), background .25s ease;
   }
   .video-card:hover .play-btn{transform:translate(-50%,-50%) scale(1.1);background:#fff;}
   .video-lightbox{
     position:fixed;
     inset:0;
     z-index:1200;
-    background:rgba(3,15,25,0.94);
+    background:rgba(15,10,8,0.94);
     display:none;
     align-items:center;
     justify-content:center;
@@ -418,7 +439,7 @@
 
   /* Benefits */
   .benefits{
-    background-image:linear-gradient(rgba(13,71,105,0.75), rgba(13,71,105,0.75)), var(--BENEFITS_BG_IMAGE);
+    background-image:linear-gradient(rgba(18,73,90,0.75), rgba(18,73,90,0.75)), var(--BENEFITS_BG_IMAGE);
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -488,6 +509,38 @@
   }
   .why-signature b{color:var(--blue-deep);}
 
+  /* Client journey: visa, tickets, culture guide, support */
+  .journey-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .journey-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:32px 24px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    position:relative;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+  }
+  .journey-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .journey-card .icon-circle{margin:0 auto 18px;width:58px;height:58px;font-size:26px;border-radius:16px;}
+  .journey-card h4{font-size:17px;color:var(--blue-deep);margin-bottom:8px;}
+  .journey-card p{color:var(--muted);font-size:14.5px;}
+  @media(min-width:981px){
+    .journey-card:not(:last-child)::after{
+      content:"→";
+      position:absolute;
+      top:50%;right:-30px;
+      transform:translateY(-50%);
+      font-size:22px;
+      color:var(--teal);
+      opacity:.55;
+      z-index:2;
+    }
+  }
+
   /* How it works */
   .steps{
     display:grid;
@@ -502,7 +555,9 @@
     box-shadow:var(--shadow);
     text-align:center;
     position:relative;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
   }
+  .step-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
   .step-num{
     width:44px;height:44px;
     border-radius:50%;
@@ -606,7 +661,7 @@
     padding:30px 26px;
     box-shadow:var(--shadow);
   }
-  .stars{color:var(--accent);font-size:18px;margin-bottom:14px;letter-spacing:2px;}
+  .stars{color:var(--gold);font-size:18px;margin-bottom:14px;letter-spacing:2px;}
   .review-card p{color:var(--ink);font-size:15px;margin-bottom:20px;font-style:italic;}
   .review-author{display:flex;align-items:center;gap:12px;}
   .review-avatar{
@@ -680,13 +735,13 @@
   /* Final CTA banner */
   .final-cta{
     text-align:center;
-    padding:70px 0;
-    background:linear-gradient(135deg,var(--accent),#ff9a3c);
-    color:#3a2600;
+    padding:80px 0;
+    background:linear-gradient(135deg,var(--sunset),var(--gold));
+    color:var(--ink);
   }
-  .final-cta h2{color:#3a2600;font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
-  .final-cta p{font-size:17px;margin-bottom:30px;opacity:.9;}
-  .final-cta .btn-primary{background:var(--blue-deep);box-shadow:0 10px 25px rgba(5,58,95,0.35);}
+  .final-cta h2{color:var(--ink);font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+  .final-cta p{font-size:17px;margin-bottom:30px;opacity:.85;}
+  .final-cta .btn-primary{background:var(--blue-deep);box-shadow:0 10px 25px rgba(18,73,90,0.35);}
 
   /* Footer */
   footer{
@@ -701,7 +756,7 @@
     gap:30px;
     margin-bottom:30px;
   }
-  .footer-logo{font-size:22px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-logo{font-family:var(--font-serif);font-size:22px;font-weight:700;color:#fff;margin-bottom:10px;}
   .footer-logo span{color:var(--teal);}
   .footer-col h5{color:#fff;font-size:15px;margin-bottom:14px;}
   .footer-col a{display:block;margin-bottom:10px;font-size:14.5px;color:rgba(255,255,255,0.8);}
@@ -742,9 +797,9 @@
     --pulse-color:rgba(37,211,102,0.5);
   }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 var(--pulse-color,rgba(5,58,95,0.5));}
-    70%{box-shadow:0 0 0 16px rgba(5,58,95,0);}
-    100%{box-shadow:0 0 0 0 rgba(5,58,95,0);}
+    0%{box-shadow:0 0 0 0 var(--pulse-color,rgba(18,73,90,0.5));}
+    70%{box-shadow:0 0 0 16px rgba(18,73,90,0);}
+    100%{box-shadow:0 0 0 0 rgba(18,73,90,0);}
   }
 
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
@@ -758,6 +813,7 @@
     .dest-grid{grid-template-columns:1fr;}
     .video-grid{grid-template-columns:1fr;}
     .benefit-grid{grid-template-columns:repeat(2,1fr);}
+    .journey-grid{grid-template-columns:repeat(2,1fr);}
     .steps{grid-template-columns:repeat(2,1fr);}
     .reviews-grid{grid-template-columns:1fr;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}
@@ -770,6 +826,7 @@
     .stats-grid{grid-template-columns:1fr;}
     .lifestyle-grid{grid-template-columns:1fr;}
     .benefit-grid{grid-template-columns:1fr;}
+    .journey-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     .hero{padding:150px 0 80px;}
     .hero-stats{gap:26px;}
@@ -784,7 +841,7 @@
     <div class="logo">In<span>Cruises</span></div>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-outline"><span>Узнать больше</span></a>
-      <a href="tel:+77473833142" class="btn btn-primary"><span>Позвонить</span> 📞</a>
+      <a href="#" data-contact="tel" class="btn btn-primary"><span>Позвонить</span> 📞</a>
     </div>
   </div>
 </header>
@@ -796,7 +853,7 @@
     <p>Путешествуй по нескольким странам за одну поездку — Средиземноморье, Карибы, Северная Европа — и оплачивай часть каждой следующей поездки баллами, которые копятся автоматически. Путешествия доступны каждому.</p>
     <div class="hero-actions">
       <a href="#about" class="btn btn-accent">Узнать больше ↓</a>
-      <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:#fff;color:#fff;">Написать в Instagram</a>
+      <a href="#" data-contact="instagram" target="_blank" class="btn btn-outline" style="border-color:#fff;color:#fff;">Написать в Instagram</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><b>17%</b><span>скидка сразу</span></div>
@@ -807,7 +864,7 @@
   </div>
 </section>
 
-<section id="stats" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+<section id="stats" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
   <div class="container">
     <h2 class="reveal">Реальные цифры</h2>
     <p class="section-sub reveal">InCruises — это не просто идея, а работающая международная сеть с реальными результатами.</p>
@@ -941,29 +998,38 @@
     <div class="dest-grid">
       <div class="dest-card reveal">
         <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80"
-             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%231B7A8C%22/></svg>';"
              alt="Средиземное море: Италия, Греция, Испания" loading="lazy">
         <div class="dest-content">
-          <h3>Средиземное море</h3>
-          <p>Италия, Греция, Испания — за одну поездку, без отдельных перелётов между странами.</p>
+          <h3>Средиземноморье</h3>
+          <p>Тёплое море, античные города, оливковые рощи и закаты над побережьем; идеально для тех, кто хочет сочетать пляжный отдых с историей и гастрономией.</p>
         </div>
       </div>
       <div class="dest-card reveal">
         <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
-             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>';"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2317667A%22/></svg>';"
              alt="Карибы: несколько островов сразу" loading="lazy">
         <div class="dest-content">
           <h3>Карибы</h3>
-          <p>Несколько живописных островов в одном маршруте — тропический рай без лишних хлопот.</p>
+          <p>Бирюзовая вода, белый песок, яркая карнавальная культура островов; направление для тех, кто ищет расслабленный тропический отдых и яркие впечатления.</p>
         </div>
       </div>
       <div class="dest-card reveal">
         <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=800&q=80"
-             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>';"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%2312495A%22/></svg>';"
              alt="Северная Европа: Норвегия, Дания, Швеция" loading="lazy">
         <div class="dest-content">
           <h3>Северная Европа</h3>
-          <p>Норвегия, Дания, Швеция — фьорды и скандинавские города в одном путешествии.</p>
+          <p>Суровая скандинавская природа, фьорды, северное сияние, минималистичный уют; для тех, кто ценит тишину, чистый воздух и нетипичные пейзажи.</p>
+        </div>
+      </div>
+      <div class="dest-card reveal">
+        <img src="https://images.unsplash.com/photo-1521292270410-a8c4d716d518?auto=format&fit=crop&w=800&q=80"
+             onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%235B7C8D%22/></svg>';"
+             alt="Антарктида: экспедиционные круизы" loading="lazy">
+        <div class="dest-content">
+          <h3>Антарктида</h3>
+          <p>Экспедиционные круизы, ледники, пингвины и абсолютная нетронутая природа; для путешественников, готовых к самому редкому и запоминающемуся маршруту на планете.</p>
         </div>
       </div>
     </div>
@@ -1003,7 +1069,7 @@
   </div>
 </section>
 
-<section id="more-than-travel" style="background:linear-gradient(180deg,#eef8fb 0%, var(--bg) 100%);">
+<section id="more-than-travel" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
   <div class="container">
     <h2 class="reveal">Это не просто путешествие</h2>
     <p class="section-sub reveal">InCruises — это про жизнь на борту: события, знакомства, отдых и комфорт для каждого.</p>
@@ -1121,6 +1187,35 @@
   </div>
 </section>
 
+<section id="client-journey" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Мы ведём команду к успеху</h2>
+    <p class="section-sub reveal">Мы не просто продаём туры — сопровождаем тебя на каждом этапе, от первых документов до возвращения домой.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <div class="icon-circle">🛂</div>
+        <h4>Помощь с визой</h4>
+        <p>Собираем и проверяем документы, консультируем по срокам и требованиям посольства — минимум бюрократии на твоей стороне.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">✈️</div>
+        <h4>Билеты и трансфер</h4>
+        <p>Подбираем и бронируем авиабилеты, помогаем с трансфером до порта — логистика поездки полностью на нас.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🌏</div>
+        <h4>Культурный гид</h4>
+        <p>Разбираем культурные особенности страны назначения: как себя вести, что уместно, а что нет, какие традиции стоит уважать.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🧭</div>
+        <h4>Поддержка в пути</h4>
+        <p>Остаёмся на связи на протяжении всей поездки — от вылета до возвращения домой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="how">
   <div class="container">
     <h2 class="reveal">Как это работает</h2>
@@ -1161,7 +1256,7 @@
   </div>
 </section>
 
-<section id="gallery" style="background:linear-gradient(180deg,var(--bg) 0%, #eef8fb 100%);">
+<section id="gallery" style="background:linear-gradient(180deg,var(--bg) 0%, #F1E8D9 100%);">
   <div class="container">
     <h2 class="reveal">Наши путешественники</h2>
     <p class="section-sub reveal">Разного возраста, из разных стран — путешествия доступны каждому.</p>
@@ -1218,13 +1313,13 @@
       </div>
       <div class="faq-item reveal">
         <div class="faq-q">С чего начать? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Просто напиши мне в Instagram kyl.sum.m или позвони по телефону +7 747 383 3142 — я подберу тариф и отвечу на все вопросы лично.</p></div>
+        <div class="faq-a"><p>Просто нажми на кнопку «Написать в Instagram» или «Позвонить» в шапке сайта, либо оставь заявку в форме связи ниже — я подберу тариф и отвечу на все вопросы лично.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="reviews" style="background:linear-gradient(180deg,var(--bg) 0%, #eef8fb 100%);">
+<section id="reviews" style="background:linear-gradient(180deg,var(--bg) 0%, #F1E8D9 100%);">
   <div class="container">
     <h2 class="reveal">Отзывы</h2>
     <p class="section-sub reveal">Тысячи положительных отзывов на Trustpilot и Google — вот несколько примеров.</p>
@@ -1274,9 +1369,9 @@
           </div>
           <div class="form-actions">
             <button type="submit" class="btn btn-accent">Отправить заявку</button>
-            <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="btn btn-primary btn-instagram">Написать в Instagram 📷</a>
-            <a href="https://wa.me/qr/CHCSSQCTIBSPF1" target="_blank" rel="noopener" class="btn btn-whatsapp">Написать в WhatsApp 💬</a>
-            <a href="tel:+77473833142" class="btn btn-outline btn-call" style="border-color:#fff;color:#fff;">Позвонить Кульсум 📞</a>
+            <a href="#" data-contact="instagram" target="_blank" class="btn btn-primary btn-instagram">Написать в Instagram 📷</a>
+            <a href="#" data-contact="whatsapp" target="_blank" class="btn btn-whatsapp">Написать в WhatsApp 💬</a>
+            <a href="#" data-contact="tel" class="btn btn-outline btn-call" style="border-color:#fff;color:#fff;">Позвонить Кульсум 📞</a>
           </div>
           <div id="form-msg"></div>
         </form>
@@ -1286,11 +1381,11 @@
         <p>Не теряй время на сомнения — напиши или позвони прямо сейчас, и я отвечу на все твои вопросы об InCruises.</p>
         <div class="contact-info-item">
           <div class="icon-circle">📷</div>
-          <div><b>Instagram</b><span>kyl.sum.m</span></div>
+          <div><b>Instagram</b><span data-contact-text="instagram">···</span></div>
         </div>
         <div class="contact-info-item">
           <div class="icon-circle">📞</div>
-          <div><b>Кульсум</b><span>+7 747 383 3142</span></div>
+          <div><b>Кульсум</b><span data-contact-text="phone">···</span></div>
         </div>
       </div>
     </div>
@@ -1314,9 +1409,9 @@
       </div>
       <div class="footer-col">
         <h5>Партнёр</h5>
-        <a href="tel:+77473833142">Кульсум</a>
-        <a href="tel:+77473833142">+7 747 383 3142</a>
-        <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener">Instagram: kyl.sum.m</a>
+        <a href="#" data-contact="tel">Кульсум</a>
+        <a href="#" data-contact="tel" data-contact-text="phone">···</a>
+        <a href="#" data-contact="instagram" target="_blank">Instagram: <span data-contact-text="instagram">···</span></a>
       </div>
       <div class="footer-col">
         <h5>Разделы</h5>
@@ -1338,15 +1433,44 @@
 </div>
 
 <div class="float-actions">
-  <a href="https://wa.me/qr/CHCSSQCTIBSPF1" target="_blank" rel="noopener" class="float-btn float-wa" aria-label="Написать в WhatsApp">
+  <a href="#" data-contact="whatsapp" target="_blank" class="float-btn float-wa" aria-label="Написать в WhatsApp">
     <svg viewBox="0 0 24 24"><path d="M12.001 2C6.478 2 2 6.478 2 12c0 1.981.579 3.826 1.578 5.379L2 22l4.769-1.545A9.953 9.953 0 0 0 12.001 22C17.523 22 22 17.523 22 12S17.523 2 12.001 2zm0 18.2c-1.729 0-3.336-.507-4.687-1.379l-.336-.213-3.147.996 1.02-3.045-.219-.351A8.19 8.19 0 0 1 3.8 12c0-4.526 3.675-8.2 8.201-8.2 4.525 0 8.199 3.674 8.199 8.2 0 4.526-3.674 8.2-8.199 8.2zm4.522-6.148c-.248-.124-1.463-.722-1.69-.805-.227-.083-.392-.124-.557.124-.164.248-.639.805-.782.971-.144.165-.289.186-.536.062-.248-.124-1.046-.385-1.991-1.229-.736-.657-1.233-1.468-1.377-1.716-.144-.248-.015-.382.108-.505.112-.111.248-.289.372-.434.124-.144.165-.248.248-.413.083-.165.041-.31-.021-.434-.062-.124-.557-1.343-.763-1.839-.201-.483-.406-.417-.557-.425-.144-.006-.31-.008-.475-.008-.165 0-.434.062-.66.31-.227.248-.867.847-.867 2.066 0 1.219.887 2.397 1.011 2.562.124.165 1.747 2.668 4.234 3.74.591.255 1.052.408 1.412.522.593.189 1.133.162 1.56.098.476-.071 1.463-.598 1.669-1.176.207-.579.207-1.075.144-1.176-.062-.104-.227-.165-.475-.289z"/></svg>
   </a>
-  <a href="https://instagram.com/kyl.sum.m" target="_blank" rel="noopener" class="float-btn float-ig" aria-label="Написать в Instagram">
+  <a href="#" data-contact="instagram" target="_blank" class="float-btn float-ig" aria-label="Написать в Instagram">
     <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 3.3.15 4.8 1.7 5 5C22 8.6 22 9 22 12.2s0 3.6-.07 4.9c-.15 3.3-1.7 4.8-5 5-1.3.07-1.7.07-4.93.07s-3.6 0-4.9-.07c-3.3-.15-4.8-1.7-5-5C2 15.8 2 15.4 2 12.2s0-3.6.07-4.9c.15-3.3 1.7-4.85 5-5C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.14 0-3.5 0-4.75.07-2.44.1-3.58 1.26-3.68 3.68C3.5 8.7 3.5 9.06 3.5 12s0 3.3.07 4.25c.1 2.42 1.24 3.58 3.68 3.68C8.5 20 8.86 20 12 20s3.5 0 4.75-.07c2.44-.1 3.58-1.26 3.68-3.68.07-.95.07-1.31.07-4.25s0-3.3-.07-4.25c-.1-2.42-1.25-3.58-3.68-3.68C15.5 4 15.14 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.86-2a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z"/></svg>
   </a>
 </div>
 
+<script src="contacts.config.js"></script>
 <script>
+  // Wire up contact links/text at runtime so raw phone/Instagram/WhatsApp
+  // values never sit as plain text in the HTML source (deters simple
+  // scrapers). Real values come from contacts.config.js (gitignored).
+  (function wireContacts(){
+    const c = window.SITE_CONTACTS || {};
+    const hrefFor = {
+      tel: c.phoneRaw ? 'tel:' + c.phoneRaw : null,
+      instagram: c.instagramUrl || null,
+      whatsapp: c.whatsappUrl || null
+    };
+    const textFor = {
+      phone: c.phoneDisplay || '',
+      instagram: c.instagramHandle || ''
+    };
+    document.querySelectorAll('[data-contact]').forEach(el => {
+      const href = hrefFor[el.dataset.contact];
+      if(!href) return;
+      el.setAttribute('href', href);
+      if(el.target === '_blank'){
+        el.setAttribute('rel', 'noopener nofollow');
+      }
+    });
+    document.querySelectorAll('[data-contact-text]').forEach(el => {
+      const text = textFor[el.dataset.contactText];
+      if(text) el.textContent = text;
+    });
+  })();
+
   // Scroll-reveal animation
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
@@ -1394,17 +1518,37 @@
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeVideoLightbox(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('open')) closeVideoLightbox(); });
 
-  // Lead form -> redirect to Instagram DM with prefilled note
+  // Lead form -> POST to a form backend if configured (contacts.config.js
+  // formEndpoint), otherwise fall back to opening Instagram directly.
   const form = document.getElementById('leadForm');
   const msg = document.getElementById('form-msg');
-  form.addEventListener('submit', function(e){
+  form.addEventListener('submit', async function(e){
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const contacts = window.SITE_CONTACTS || {};
     msg.style.display = 'block';
-    msg.textContent = `Спасибо, ${name}! Заявка получена. Напишите Кульсум в Instagram (kyl.sum.m) или ждите звонка на номер ${phone}.`;
+
+    if(contacts.formEndpoint){
+      try{
+        await fetch(contacts.formEndpoint, {
+          method: 'POST',
+          headers: {'Accept':'application/json', 'Content-Type':'application/json'},
+          body: JSON.stringify({name, phone})
+        });
+        msg.textContent = `Спасибо, ${name}! Заявка получена — мы свяжемся с вами в ближайшее время.`;
+        form.reset();
+        return;
+      }catch(err){
+        // Falls through to the direct-contact fallback below.
+      }
+    }
+
+    msg.textContent = `Спасибо, ${name}! Заявка получена. Мы свяжемся с вами в Instagram или по телефону.`;
     form.reset();
-    setTimeout(() => { window.open('https://instagram.com/kyl.sum.m', '_blank'); }, 1200);
+    if(contacts.instagramUrl){
+      setTimeout(() => { window.open(contacts.instagramUrl, '_blank', 'noopener'); }, 1200);
+    }
   });
 </script>
 
