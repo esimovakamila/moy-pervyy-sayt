@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>InCruises — Путешествия по подписке | Начни жить сейчас</title>
-<meta name="description" content="InCruises — клуб путешествий по подписке. Скидка 17% сразу, накопительные баллы, круизы по нескольким странам за одну поездку. Присоединяйся к тем, кто уже выбрал свободу.">
+<title>InCruises — Круизы и туры по всему миру со скидкой 17% | Кульсум</title>
+<meta name="description" content="Круизный клуб InCruises: скидка 17% на круизы, отели и туры, бонусные баллы на будущие поездки, направления по всему миру — от Средиземноморья до Антарктиды. Прозрачные условия членства, без обязательного привлечения других людей.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -74,6 +74,17 @@
     font-weight:700;
     letter-spacing:.04em;
     text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .badge-outline{
+    display:inline-block;
+    background:transparent;
+    border:1px solid #c9bfa8;
+    color:var(--muted);
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
     margin-bottom:18px;
   }
   .btn{
@@ -207,7 +218,7 @@
   .hero-stat b{display:block;font-size:30px;font-weight:800;}
   .hero-stat span{font-size:14px;color:rgba(255,255,255,0.8);}
 
-  /* What is InCruises */
+  /* Transparency / how the club works */
   .about-grid{
     display:grid;
     grid-template-columns:1.1fr 1fr;
@@ -269,6 +280,49 @@
     padding:10px 16px;
     font-size:16px;
   }
+  .transparency-note{
+    margin-top:28px;
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    background:rgba(212,175,122,0.14);
+    border:1px solid rgba(212,175,122,0.4);
+    border-radius:var(--radius);
+    padding:22px 24px;
+  }
+  .transparency-note p{color:var(--ink);font-size:15px;}
+  .transparency-note b{color:var(--blue-deep);}
+
+  /* How it works — steps */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    position:relative;
+    margin-top:56px;
+  }
+  .step-card{
+    background:var(--white);
+    border-radius:var(--radius);
+    padding:32px 24px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    position:relative;
+    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
+  }
+  .step-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .step-num{
+    width:44px;height:44px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;
+    font-size:18px;
+    margin:0 auto 18px;
+  }
+  .step-card h4{font-size:17px;color:var(--blue-deep);margin-bottom:8px;}
+  .step-card p{color:var(--muted);font-size:14.5px;}
 
   /* Real numbers */
   .stats-grid{
@@ -308,7 +362,7 @@
   }
   .cards-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:26px;
   }
   .info-card{
@@ -449,7 +503,7 @@
   .benefits .section-sub{color:rgba(255,255,255,0.85);}
   .benefit-grid{
     display:grid;
-    grid-template-columns:repeat(5,1fr);
+    grid-template-columns:repeat(4,1fr);
     gap:22px;
   }
   .benefit-card{
@@ -541,36 +595,6 @@
     }
   }
 
-  /* How it works */
-  .steps{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:24px;
-    position:relative;
-  }
-  .step-card{
-    background:var(--white);
-    border-radius:var(--radius);
-    padding:32px 24px;
-    box-shadow:var(--shadow);
-    text-align:center;
-    position:relative;
-    transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
-  }
-  .step-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
-  .step-num{
-    width:44px;height:44px;
-    border-radius:50%;
-    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
-    color:#fff;
-    display:flex;align-items:center;justify-content:center;
-    font-weight:800;
-    font-size:18px;
-    margin:0 auto 18px;
-  }
-  .step-card h4{font-size:17px;color:var(--blue-deep);margin-bottom:8px;}
-  .step-card p{color:var(--muted);font-size:14.5px;}
-
   /* Video */
   .video-wrap{
     max-width:860px;
@@ -647,7 +671,7 @@
     color:var(--muted);
     font-size:15.5px;
   }
-  .faq-item.open .faq-a{max-height:260px;padding:0 26px 22px;}
+  .faq-item.open .faq-a{max-height:320px;padding:0 26px 22px;}
 
   /* Reviews */
   .reviews-grid{
@@ -732,16 +756,24 @@
     display:none;
   }
 
-  /* Final CTA banner */
-  .final-cta{
-    text-align:center;
+  /* Partner section — clearly separate from the travel offer */
+  .partner-section{
     padding:80px 0;
-    background:linear-gradient(135deg,var(--sunset),var(--gold));
-    color:var(--ink);
+    background:#F1E8D9;
   }
-  .final-cta h2{color:var(--ink);font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
-  .final-cta p{font-size:17px;margin-bottom:30px;opacity:.85;}
-  .final-cta .btn-primary{background:var(--blue-deep);box-shadow:0 10px 25px rgba(18,73,90,0.35);}
+  .partner-card{
+    max-width:760px;
+    margin:0 auto;
+    background:var(--white);
+    border:1px solid #e4dbc9;
+    border-radius:var(--radius);
+    padding:44px 40px;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .partner-card h2{font-size:clamp(24px,3vw,32px);margin-bottom:14px;color:var(--blue-deep);}
+  .partner-card p{color:var(--muted);font-size:16px;max-width:600px;margin:0 auto 28px;}
+  .partner-card .btn{margin:0 auto;}
 
   /* Footer */
   footer{
@@ -831,6 +863,7 @@
     .hero{padding:150px 0 80px;}
     .hero-stats{gap:26px;}
     .footer-inner{flex-direction:column;}
+    .partner-card{padding:32px 24px;}
   }
 </style>
 </head>
@@ -840,7 +873,7 @@
   <div class="nav">
     <div class="logo">In<span>Cruises</span></div>
     <div class="nav-cta">
-      <a href="#contact" class="btn btn-outline"><span>Узнать больше</span></a>
+      <a href="#destinations" class="btn btn-outline"><span>Направления</span></a>
       <a href="#" data-contact="tel" class="btn btn-primary"><span>Позвонить</span> 📞</a>
     </div>
   </div>
@@ -848,145 +881,17 @@
 
 <section class="hero" id="hero">
   <div class="container hero-inner">
-    <div class="badge">Клуб путешествий · часть inGroup International</div>
-    <h1>Начни жить сейчас</h1>
-    <p>Путешествуй по нескольким странам за одну поездку — Средиземноморье, Карибы, Северная Европа — и оплачивай часть каждой следующей поездки баллами, которые копятся автоматически. Путешествия доступны каждому.</p>
+    <div class="badge">Клубная программа путешествий · inGroup International</div>
+    <h1>Круизы и туры по всему миру — со скидкой 17%</h1>
+    <p>От тёплого Средиземноморья до ледников Антарктиды: бронируй круизы, отели и туры с мгновенной скидкой и бонусами, которые снижают стоимость каждой следующей поездки.</p>
     <div class="hero-actions">
-      <a href="#about" class="btn btn-accent">Узнать больше ↓</a>
+      <a href="#destinations" class="btn btn-accent">Смотреть направления ↓</a>
       <a href="#" data-contact="instagram" target="_blank" class="btn btn-outline" style="border-color:#fff;color:#fff;">Написать в Instagram</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat"><b>17%</b><span>скидка сразу</span></div>
-      <div class="hero-stat"><b>2:1</b><span>баллы за каждый $1</span></div>
       <div class="hero-stat"><b>4-6</b><span>стран за 1 поездку</span></div>
-      <div class="hero-stat"><b>3</b><span>тарифа под бюджет</span></div>
-    </div>
-  </div>
-</section>
-
-<section id="stats" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
-  <div class="container">
-    <h2 class="reveal">Реальные цифры</h2>
-    <p class="section-sub reveal">InCruises — это не просто идея, а работающая международная сеть с реальными результатами.</p>
-    <div class="stats-grid">
-      <div class="stat-card reveal">
-        <div class="icon-circle">🌐</div>
-        <div class="stat-number">1,6 млн+</div>
-        <div class="stat-label">участников по всему миру</div>
-      </div>
-      <div class="stat-card reveal">
-        <div class="icon-circle">🗺️</div>
-        <div class="stat-number">200+</div>
-        <div class="stat-label">стран</div>
-      </div>
-      <div class="stat-card reveal">
-        <div class="icon-circle">🛳️</div>
-        <div class="stat-number">700 000+</div>
-        <div class="stat-label">поездок забронировано с 2016 года</div>
-      </div>
-      <div class="stat-card reveal">
-        <div class="icon-circle">📈</div>
-        <div class="stat-number">50 000+</div>
-        <div class="stat-label">пассажиров только за первые месяцы 2026 года</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="container">
-    <h2 class="reveal">Что такое InCruises</h2>
-    <p class="section-sub reveal">Клуб-подписка на путешествия: круизы, отели и туры со скидками. Не теряй время на сомнения — система работает просто и прозрачно.</p>
-    <div class="about-grid">
-      <div class="about-card reveal">
-        <ul class="about-points">
-          <li>
-            <div class="icon-circle">💳</div>
-            <div>
-              <h4>Мгновенная скидка 17%</h4>
-              <p>Активные участники клуба сразу получают скидку 17% на круизы, отели и туры — экономия начинается с первого бронирования.</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon-circle">⭐</div>
-            <div>
-              <h4>Reward Points</h4>
-              <p>2 балла за каждый потраченный $1. Баллы копятся и снижают стоимость будущих поездок — чем больше путешествуешь, тем выгоднее становится.</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon-circle">🌍</div>
-            <div>
-              <h4>Несколько стран за одну поездку</h4>
-              <p>Многие круизные маршруты проходят сразу через несколько стран — за один круиз можно посетить 4-6 стран без отдельных виз и перелётов.</p>
-            </div>
-          </li>
-          <li>
-            <div class="icon-circle">🎯</div>
-            <div>
-              <h4>Тариф под любой бюджет</h4>
-              <p>Starter, Classic и Premium — выбирай уровень членства, который комфортен именно тебе.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="about-visual reveal">
-        <div class="big-number">17%</div>
-        <div class="big-label">скидка сразу на круизы, отели и туры</div>
-        <hr>
-        <div class="points-formula">
-          <div class="tag">$1 потрачен</div>
-          <span class="op">=</span>
-          <div class="tag">2 балла</div>
-        </div>
-        <div class="big-label" style="margin-top:14px;">Баллы оплачивают часть следующей поездки</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="everyone" id="everyone">
-  <div class="container">
-    <h2 class="reveal">Это доступно каждому</h2>
-    <p class="section-sub reveal">Путешествия доступны каждому — это не привилегия только для состоятельных людей. Система баллов и гибкие тарифы делают море, острова и новые страны реальностью для любой семьи.</p>
-    <div class="cards-grid">
-      <div class="info-card reveal">
-        <div class="icon-circle">👩‍👧‍👦</div>
-        <h3>Многодетные семьи</h3>
-        <p>Мама с несколькими детьми может позволить себе полноценный отдых всей семьёй, накапливая и используя баллы, а также выбирая тариф по бюджету.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="icon-circle">🧓</div>
-        <h3>Пожилые путешественники</h3>
-        <p>Современные лайнеры адаптированы под нужды старшего возраста — комфортные каюты, медицинская поддержка на борту и неспешный ритм поездки.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="icon-circle">👩‍👧</div>
-        <h3>Мамы-одиночки</h3>
-        <p>Накопленные баллы и скидка 17% позволяют съездить с детьми в путешествие без больших расходов — отдых становится реально достижимым.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="icon-circle">♿</div>
-        <h3>Люди с инвалидностью</h3>
-        <p>Лайнеры оборудованы пандусами, лифтами и доступными каютами — комфортное путешествие возможно для каждого, независимо от физических возможностей.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="icon-circle">🚀</div>
-        <h3>Молодые и уверенные в себе</h3>
-        <p>Не нужно ждать «подходящего момента» — начать зарабатывать и путешествовать можно уже сейчас. Никакого стартового капитала или опыта в бизнесе, всё можно совмещать с учёбой или основной работой.</p>
-      </div>
-      <div class="info-card reveal">
-        <div class="icon-circle">✨</div>
-        <h3>Поколение свободы</h3>
-        <p>Дерзкие, перспективные, независимые — те, кто сам выбирает свой путь. Пока другие только сомневаются, ты уже строишь жизнь, где путешествия и доход идут рука об руку.</p>
-      </div>
-    </div>
-    <div class="about-card reveal" style="margin-top:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
-      <div class="icon-circle" style="font-size:26px;">🗣️</div>
-      <div>
-        <h4 style="color:var(--blue-deep);font-size:18px;margin-bottom:4px;">Незнание языка — не проблема</h4>
-        <p style="color:var(--muted);">На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение и комфорт гарантированы.</p>
-      </div>
+      <div class="hero-stat"><b>4</b><span>направления на выбор</span></div>
     </div>
   </div>
 </section>
@@ -994,7 +899,7 @@
 <section id="destinations">
   <div class="container">
     <h2 class="reveal">Куда можно поехать</h2>
-    <p class="section-sub reveal">Присоединяйся к тем, кто уже выбрал свободу — и открывай сразу несколько стран за одну поездку.</p>
+    <p class="section-sub reveal">Каждое направление — это готовый маршрут на несколько стран или целый континент за одну поездку.</p>
     <div class="dest-grid">
       <div class="dest-card reveal">
         <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80"
@@ -1036,34 +941,37 @@
   </div>
 </section>
 
-<section id="my-videos">
+<section class="everyone" id="everyone">
   <div class="container">
-    <h2 class="reveal">Смотри сам, как это выглядит</h2>
-    <p class="section-sub reveal">Реальные кадры с моих поездок — нажми на видео, чтобы посмотреть со звуком.</p>
-    <div class="video-grid">
-      <div class="video-card reveal" data-video="video1.mp4">
-        <video poster="images/video1-poster.jpg" preload="none" muted playsinline>
-          <source src="video1.mp4" type="video/mp4">
-        </video>
-        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+    <h2 class="reveal">Это доступно каждому</h2>
+    <p class="section-sub reveal">Путешествия не должны быть привилегией только для состоятельных людей. Скидки и гибкие тарифы делают море, острова и новые страны реальностью для любой семьи.</p>
+    <div class="cards-grid">
+      <div class="info-card reveal">
+        <div class="icon-circle">👩‍👧‍👦</div>
+        <h3>Многодетные семьи</h3>
+        <p>Полноценный отдых всей семьёй становится доступнее за счёт накопленных бонусов и тарифа по бюджету.</p>
       </div>
-      <div class="video-card reveal" data-video="video2.mp4">
-        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>" preload="none" muted playsinline>
-          <source src="video2.mp4" type="video/mp4">
-        </video>
-        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      <div class="info-card reveal">
+        <div class="icon-circle">🧓</div>
+        <h3>Пожилые путешественники</h3>
+        <p>Современные лайнеры адаптированы под нужды старшего возраста — комфортные каюты, медицинская поддержка на борту и неспешный ритм поездки.</p>
       </div>
-      <div class="video-card reveal" data-video="video3.mp4">
-        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23046380%22/></svg>" preload="none" muted playsinline>
-          <source src="video3.mp4" type="video/mp4">
-        </video>
-        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      <div class="info-card reveal">
+        <div class="icon-circle">👩‍👧</div>
+        <h3>Мамы-одиночки</h3>
+        <p>Накопленные бонусы и скидка 17% позволяют съездить с детьми в путешествие без больших расходов.</p>
       </div>
-      <div class="video-card reveal" data-video="video4.mp4">
-        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>" preload="none" muted playsinline>
-          <source src="video4.mp4" type="video/mp4">
-        </video>
-        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
+      <div class="info-card reveal">
+        <div class="icon-circle">♿</div>
+        <h3>Люди с инвалидностью</h3>
+        <p>Лайнеры оборудованы пандусами, лифтами и доступными каютами — комфортное путешествие возможно для каждого.</p>
+      </div>
+    </div>
+    <div class="about-card reveal" style="margin-top:28px;display:flex;gap:18px;align-items:center;flex-wrap:wrap;">
+      <div class="icon-circle" style="font-size:26px;">🗣️</div>
+      <div>
+        <h4 style="color:var(--blue-deep);font-size:18px;margin-bottom:4px;">Незнание языка — не проблема</h4>
+        <p style="color:var(--muted);">На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение и комфорт гарантированы.</p>
       </div>
     </div>
   </div>
@@ -1071,8 +979,8 @@
 
 <section id="more-than-travel" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
   <div class="container">
-    <h2 class="reveal">Это не просто путешествие</h2>
-    <p class="section-sub reveal">InCruises — это про жизнь на борту: события, знакомства, отдых и комфорт для каждого.</p>
+    <h2 class="reveal">Это не просто перелёт из точки А в точку Б</h2>
+    <p class="section-sub reveal">На борту круизного лайнера — своя жизнь: события, знакомства, отдых и комфорт для каждого.</p>
     <div class="lifestyle-grid">
       <div class="info-card reveal">
         <div class="icon-circle">💍</div>
@@ -1082,7 +990,7 @@
       <div class="info-card reveal">
         <div class="icon-circle">🤝</div>
         <h3>Знакомства и новые связи</h3>
-        <p>На лайнере тысячи людей со всего мира — отличная возможность расширить круг общения, в том числе для тех, кто в поиске второй половинки.</p>
+        <p>На лайнере тысячи людей со всего мира — хорошая возможность расширить круг общения.</p>
       </div>
       <div class="info-card reveal">
         <div class="icon-circle">🏋️</div>
@@ -1114,132 +1022,34 @@
   </div>
 </section>
 
-<section class="benefits" id="benefits">
+<section id="my-videos">
   <div class="container">
-    <h2 class="reveal">Выгоды</h2>
-    <p class="section-sub reveal">Всё, что делает членство в клубе реально выгодным.</p>
-    <div class="benefit-grid">
-      <div class="benefit-card reveal">
-        <div class="emoji">💥</div>
-        <h4>Скидка 17% сразу</h4>
-        <p>На круизы, отели и туры для активных участников.</p>
+    <h2 class="reveal">Смотри сам, как это выглядит</h2>
+    <p class="section-sub reveal">Реальные кадры с моих поездок — нажми на видео, чтобы посмотреть со звуком.</p>
+    <div class="video-grid">
+      <div class="video-card reveal" data-video="video1.mp4">
+        <video poster="images/video1-poster.jpg" preload="none" muted playsinline>
+          <source src="video1.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
       </div>
-      <div class="benefit-card reveal">
-        <div class="emoji">⭐</div>
-        <h4>Баллы 2 к 1</h4>
-        <p>2 балла за каждый потраченный $1 — экономия на будущих поездках.</p>
+      <div class="video-card reveal" data-video="video2.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230d5c8c%22/></svg>" preload="none" muted playsinline>
+          <source src="video2.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
       </div>
-      <div class="benefit-card reveal">
-        <div class="emoji">🎚️</div>
-        <h4>Три тарифа</h4>
-        <p>Starter, Classic, Premium — под любой бюджет.</p>
+      <div class="video-card reveal" data-video="video3.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23046380%22/></svg>" preload="none" muted playsinline>
+          <source src="video3.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
       </div>
-      <div class="benefit-card reveal">
-        <div class="emoji">🗺️</div>
-        <h4>Несколько стран сразу</h4>
-        <p>Один круиз — 4-6 стран без лишних виз и перелётов.</p>
-      </div>
-      <div class="benefit-card reveal">
-        <div class="emoji">🤝</div>
-        <h4>Заработок на рекомендациях</h4>
-        <p>Партнёрская программа — доход за приглашённых людей.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="why-me">
-  <div class="container why-me">
-    <div class="why-photo reveal">
-      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
-           alt="Команда партнёров InCruises" loading="lazy">
-      <div class="why-badge">Тысячи отзывов ⭐ на Trustpilot и Google</div>
-    </div>
-    <div class="reveal">
-      <h2 style="text-align:left;">Почему именно я</h2>
-      <p class="section-sub" style="text-align:left;margin:0 0 32px;">Мы — весёлая и позитивная команда, которая по-настоящему любит путешествия и людей.</p>
-      <ul class="why-list">
-        <li>
-          <div class="icon-circle">🤗</div>
-          <div>
-            <h4>Поддержка на каждом шаге</h4>
-            <p>От выбора тарифа до первой поездки — я рядом и отвечаю на все вопросы.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon-circle">🧩</div>
-          <div>
-            <h4>Вместе разбираем ошибки</h4>
-            <p>Если что-то пошло не так — решаем вместе, без лишнего стресса и давления.</p>
-          </div>
-        </li>
-        <li>
-          <div class="icon-circle">🎉</div>
-          <div>
-            <h4>Встречи и корпоративы</h4>
-            <p>Регулярные встречи команды и мероприятия — это не только бизнес, но и настоящая дружная атмосфера.</p>
-          </div>
-        </li>
-      </ul>
-      <div class="why-signature">Твой партнёр — <b>Кульсум</b>. Присоединяйся к тем, кто уже выбрал свободу.</div>
-    </div>
-  </div>
-</section>
-
-<section id="client-journey" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
-  <div class="container">
-    <h2 class="reveal">Мы ведём команду к успеху</h2>
-    <p class="section-sub reveal">Мы не просто продаём туры — сопровождаем тебя на каждом этапе, от первых документов до возвращения домой.</p>
-    <div class="journey-grid">
-      <div class="journey-card reveal">
-        <div class="icon-circle">🛂</div>
-        <h4>Помощь с визой</h4>
-        <p>Собираем и проверяем документы, консультируем по срокам и требованиям посольства — минимум бюрократии на твоей стороне.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">✈️</div>
-        <h4>Билеты и трансфер</h4>
-        <p>Подбираем и бронируем авиабилеты, помогаем с трансфером до порта — логистика поездки полностью на нас.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">🌏</div>
-        <h4>Культурный гид</h4>
-        <p>Разбираем культурные особенности страны назначения: как себя вести, что уместно, а что нет, какие традиции стоит уважать.</p>
-      </div>
-      <div class="journey-card reveal">
-        <div class="icon-circle">🧭</div>
-        <h4>Поддержка в пути</h4>
-        <p>Остаёмся на связи на протяжении всей поездки — от вылета до возвращения домой.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="container">
-    <h2 class="reveal">Как это работает</h2>
-    <p class="section-sub reveal">Четыре простых шага от знакомства до поездки со скидкой.</p>
-    <div class="steps">
-      <div class="step-card reveal">
-        <div class="step-num">1</div>
-        <h4>Выбор тарифа</h4>
-        <p>Starter, Classic или Premium — исходя из бюджета и целей.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">2</div>
-        <h4>Регистрация</h4>
-        <p>Оформляем членство в клубе быстро и без лишней бюрократии.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">3</div>
-        <h4>Накопление баллов</h4>
-        <p>2 балла за каждый потраченный $1 — баллы копятся автоматически.</p>
-      </div>
-      <div class="step-card reveal">
-        <div class="step-num">4</div>
-        <h4>Поездка со скидкой</h4>
-        <p>Бронируешь круиз, отель или тур со скидкой 17% и баллами.</p>
+      <div class="video-card reveal" data-video="video4.mp4">
+        <video poster="data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22960%22 height=%22540%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23053a5f%22/></svg>" preload="none" muted playsinline>
+          <source src="video4.mp4" type="video/mp4">
+        </video>
+        <button class="play-btn" aria-label="Воспроизвести видео">▶</button>
       </div>
     </div>
   </div>
@@ -1290,43 +1100,218 @@
   </div>
 </section>
 
-<section id="faq">
+<section id="about">
   <div class="container">
-    <h2 class="reveal">Частые вопросы</h2>
-    <p class="section-sub reveal">Не теряй время на сомнения — вот честные ответы.</p>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <div class="faq-q">Сколько это стоит? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Есть три тарифа — Starter, Classic и Premium — под разный бюджет. Точную стоимость и условия каждого тарифа я подробно расскажу лично, напиши мне в Instagram или позвони.</p></div>
+    <h2 class="reveal">Как работает клуб</h2>
+    <p class="section-sub reveal">Без мелкого шрифта и без «уточняйте у менеджера» — вот что входит в членство и как это работает.</p>
+    <div class="about-grid">
+      <div class="about-card reveal">
+        <ul class="about-points">
+          <li>
+            <div class="icon-circle">💳</div>
+            <div>
+              <h4>Мгновенная скидка 17%</h4>
+              <p>Активные участники клуба сразу получают скидку 17% на круизы, отели и туры — экономия начинается с первого бронирования.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">⭐</div>
+            <div>
+              <h4>Бонусные баллы</h4>
+              <p>2 балла за каждый потраченный $1. Баллы копятся и снижают стоимость будущих поездок.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">🎯</div>
+            <div>
+              <h4>Три тарифа</h4>
+              <p>Starter, Classic и Premium — различаются стоимостью взноса и набором привилегий. Точная сумма по каждому тарифу называется до оплаты, а не после.</p>
+            </div>
+          </li>
+          <li>
+            <div class="icon-circle">🚪</div>
+            <div>
+              <h4>Можно отменить в любой момент</h4>
+              <p>Членство не обязывает навсегда. Условия отмены и возврата фиксируются в договоре при оформлении — я разбираю их с тобой до оплаты.</p>
+            </div>
+          </li>
+        </ul>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Можно ли отменить членство? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Да, условия членства гибкие. Все детали и порядок отмены я объясню при регистрации, чтобы ты точно понимал(а), на что подписываешься.</p></div>
+      <div class="about-visual reveal">
+        <div class="big-number">17%</div>
+        <div class="big-label">скидка сразу на круизы, отели и туры</div>
+        <hr>
+        <div class="points-formula">
+          <div class="tag">$1 потрачен</div>
+          <span class="op">=</span>
+          <div class="tag">2 балла</div>
+        </div>
+        <div class="big-label" style="margin-top:14px;">Баллы оплачивают часть следующей поездки</div>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Подойдёт ли это пожилым родителям? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Да. Современные лайнеры адаптированы под комфорт старшего возраста, а на борту всегда доступна поддержка персонала — путешествие будет спокойным и приятным.</p></div>
+    </div>
+    <div class="transparency-note reveal">
+      <div class="icon-circle" style="background:var(--gold);">✓</div>
+      <p><b>Приглашать других людей не обязательно.</b> Скидка 17% и бонусные баллы действуют для тебя просто как участника клуба — вне зависимости от того, приглашаешь ты кого-то или нет. Если хочешь только ездить в путешествия — этого достаточно.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card reveal">
+        <div class="step-num">1</div>
+        <h4>Выбор тарифа</h4>
+        <p>Starter, Classic или Premium — исходя из бюджета и целей.</p>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">Нужно ли знать иностранный язык? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Нет. На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение никогда не станет проблемой.</p></div>
+      <div class="step-card reveal">
+        <div class="step-num">2</div>
+        <h4>Понятные условия</h4>
+        <p>Показываю стоимость, что входит и условия отмены — до, а не после оплаты.</p>
       </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">С чего начать? <span class="plus">+</span></div>
-        <div class="faq-a"><p>Просто нажми на кнопку «Написать в Instagram» или «Позвонить» в шапке сайта, либо оставь заявку в форме связи ниже — я подберу тариф и отвечу на все вопросы лично.</p></div>
+      <div class="step-card reveal">
+        <div class="step-num">3</div>
+        <h4>Накопление баллов</h4>
+        <p>2 балла за каждый потраченный $1 — баллы копятся автоматически.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-num">4</div>
+        <h4>Поездка со скидкой</h4>
+        <p>Бронируешь круиз, отель или тур со скидкой 17% и баллами.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="reviews" style="background:linear-gradient(180deg,var(--bg) 0%, #F1E8D9 100%);">
+<section id="client-journey" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
   <div class="container">
-    <h2 class="reveal">Отзывы</h2>
-    <p class="section-sub reveal">Тысячи положительных отзывов на Trustpilot и Google — вот несколько примеров.</p>
+    <h2 class="reveal">От визы до возвращения — мы рядом</h2>
+    <p class="section-sub reveal">Помогаем не только выбрать тур, но и подготовиться к поездке от начала до конца.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <div class="icon-circle">🛂</div>
+        <h4>Помощь с визой</h4>
+        <p>Собираем и проверяем документы, консультируем по срокам и требованиям посольства — минимум бюрократии на твоей стороне.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">✈️</div>
+        <h4>Билеты и трансфер</h4>
+        <p>Подбираем и бронируем авиабилеты, помогаем с трансфером до порта — логистика поездки полностью на нас.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🌏</div>
+        <h4>Культурный гид</h4>
+        <p>Разбираем культурные особенности страны назначения: как себя вести, что уместно, а что нет, какие традиции стоит уважать.</p>
+      </div>
+      <div class="journey-card reveal">
+        <div class="icon-circle">🧭</div>
+        <h4>Поддержка в пути</h4>
+        <p>Остаёмся на связи на протяжении всей поездки — от вылета до возвращения домой.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="container">
+    <h2 class="reveal">Выгоды</h2>
+    <p class="section-sub reveal">Всё, что делает членство в клубе реально выгодным для твоих поездок.</p>
+    <div class="benefit-grid">
+      <div class="benefit-card reveal">
+        <div class="emoji">💥</div>
+        <h4>Скидка 17% сразу</h4>
+        <p>На круизы, отели и туры для активных участников.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">⭐</div>
+        <h4>Баллы 2 к 1</h4>
+        <p>2 балла за каждый потраченный $1 — экономия на будущих поездках.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">🎚️</div>
+        <h4>Три тарифа</h4>
+        <p>Starter, Classic, Premium — под любой бюджет.</p>
+      </div>
+      <div class="benefit-card reveal">
+        <div class="emoji">🗺️</div>
+        <h4>Несколько стран сразу</h4>
+        <p>Один круиз — 4-6 стран без лишних виз и перелётов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why-me">
+  <div class="container why-me">
+    <div class="why-photo reveal">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22800%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230891a8%22/></svg>';"
+           alt="Кульсум, партнёр InCruises" loading="lazy">
+      <div class="why-badge">Отзывы можно проверить на Trustpilot и Google</div>
+    </div>
+    <div class="reveal">
+      <h2 style="text-align:left;">Почему именно я</h2>
+      <p class="section-sub" style="text-align:left;margin:0 0 32px;">Разбираюсь в направлениях и условиях клуба, чтобы объяснить их тебе просто и честно.</p>
+      <ul class="why-list">
+        <li>
+          <div class="icon-circle">🤗</div>
+          <div>
+            <h4>Поддержка на каждом шаге</h4>
+            <p>От выбора тарифа до первой поездки — я рядом и отвечаю на все вопросы.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">🧩</div>
+          <div>
+            <h4>Вместе разбираем ошибки</h4>
+            <p>Если что-то пошло не так — решаем вместе, без лишнего стресса и давления.</p>
+          </div>
+        </li>
+        <li>
+          <div class="icon-circle">💬</div>
+          <div>
+            <h4>Честно и без спешки</h4>
+            <p>Отвечаю на вопросы столько, сколько нужно — никакого давления и искусственной срочности.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="why-signature">Твой персональный контакт — <b>Кульсум</b>. Всегда на связи, если понадобится помощь.</div>
+    </div>
+  </div>
+</section>
+
+<section id="stats" style="background:linear-gradient(180deg,#F1E8D9 0%, var(--bg) 100%);">
+  <div class="container">
+    <h2 class="reveal">Реальные цифры</h2>
+    <p class="section-sub reveal">Цифры, которые можно проверить — а не голословные обещания.</p>
+    <div class="stats-grid">
+      <div class="stat-card reveal">
+        <div class="icon-circle">🌐</div>
+        <div class="stat-number">1,6 млн+</div>
+        <div class="stat-label">участников по всему миру</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🗺️</div>
+        <div class="stat-number">200+</div>
+        <div class="stat-label">стран</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">🛳️</div>
+        <div class="stat-number">700 000+</div>
+        <div class="stat-label">поездок забронировано с 2016 года</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="icon-circle">📈</div>
+        <div class="stat-number">50 000+</div>
+        <div class="stat-label">пассажиров только за первые месяцы 2026 года</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <h2 class="reveal">Отзывы реальных путешественников</h2>
+    <p class="section-sub reveal">Их можно проверить на Trustpilot и Google — вот несколько примеров.</p>
     <div class="reviews-grid">
       <div class="review-card reveal">
         <div class="stars">★★★★★</div>
-        <p>«Давно хотели путешествовать всей семьёй, но казалось, что это дорого. Система баллов реально помогла спланировать первую поездку без стресса для бюджета.»</p>
+        <p>«Давно хотели путешествовать всей семьёй, но казалось, что это дорого. Скидка и бонусные баллы реально помогли спланировать первую поездку без стресса для бюджета.»</p>
         <div class="review-author">
           <div class="review-avatar">А</div>
           <div><b>Алия</b><span>участница клуба</span></div>
@@ -1352,10 +1337,47 @@
   </div>
 </section>
 
+<section id="faq" style="background:linear-gradient(180deg,var(--bg) 0%, #F1E8D9 100%);">
+  <div class="container">
+    <h2 class="reveal">Частые вопросы</h2>
+    <p class="section-sub reveal">Честные ответы на вопросы, которые действительно волнуют.</p>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <div class="faq-q">Это не пирамида? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Нет. InCruises — клуб-подписка на реальные travel-услуги: круизы, отели и туры от лицензированных операторов через inGroup International. Компания зарабатывает на бронированиях поездок, а не на привлечении новых участников. Партнёрская программа существует, но это отдельное и необязательное предложение.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Обязательно ли приглашать других людей? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Нет. Скидка 17% и бонусные баллы доступны просто как участнику клуба — вне зависимости от того, приглашаешь ты кого-то или нет.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Что если я просто хочу ездить в круизы и не хочу никого приглашать? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Это абсолютно нормально и самый частый сценарий: большинство участников пользуются клубом только для своих поездок и никогда никого не приглашают.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Сколько это стоит? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Есть три тарифа — Starter, Classic и Premium — с разной стоимостью и набором привилегий. Точную сумму по каждому тарифу называю до оплаты, чтобы ты принимал(а) решение с полной картиной, а не постфактум.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Могу ли я выйти и вернуть деньги? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Да, членство можно отменить. Условия отмены и возврата фиксируются в договоре при оформлении — я прохожу их с тобой до оплаты, а не прячу в мелком шрифте.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Подойдёт ли это пожилым родителям? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Да. Современные лайнеры адаптированы под комфорт старшего возраста, а на борту всегда доступна поддержка персонала — путешествие будет спокойным и приятным.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Нужно ли знать иностранный язык? <span class="plus">+</span></div>
+        <div class="faq-a"><p>Нет. На лайнерах работает персонал и гиды на разных языках, а среди туристов много русско- и англоговорящих — общение никогда не станет проблемой.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="contact" id="contact">
   <div class="container">
-    <h2 class="reveal">Присоединяйся к тем, кто уже выбрал свободу</h2>
-    <p class="section-sub reveal">Оставь заявку — я свяжусь с тобой и подберу подходящий тариф.</p>
+    <h2 class="reveal">Готовы обсудить поездку?</h2>
+    <p class="section-sub reveal">Оставь заявку — отвечу с вариантами направлений и тарифов.</p>
     <div class="contact-wrap">
       <div class="contact-form reveal">
         <form id="leadForm">
@@ -1378,7 +1400,7 @@
       </div>
       <div class="contact-direct reveal">
         <h3>Свяжись напрямую</h3>
-        <p>Не теряй время на сомнения — напиши или позвони прямо сейчас, и я отвечу на все твои вопросы об InCruises.</p>
+        <p>Напиши или позвони, и я отвечу на все твои вопросы об InCruises.</p>
         <div class="contact-info-item">
           <div class="icon-circle">📷</div>
           <div><b>Instagram</b><span data-contact-text="instagram">···</span></div>
@@ -1392,11 +1414,14 @@
   </div>
 </section>
 
-<section class="final-cta">
+<section class="partner-section" id="partner">
   <div class="container">
-    <h2>Начни жить сейчас</h2>
-    <p>Путешествия доступны каждому — присоединяйся к тем, кто уже выбрал свободу.</p>
-    <a href="#contact" class="btn btn-primary">Узнать больше</a>
+    <div class="partner-card reveal">
+      <div class="badge-outline">Отдельно от travel-предложения</div>
+      <h2>Хотите развивать это как партнёр?</h2>
+      <p>Если помимо путешествий вам интересно развивать клуб и приглашать других людей — в InCruises есть отдельная партнёрская программа с доходом за приглашённых участников. Это отдельное предложение: оно совершенно не обязательно, чтобы пользоваться скидками на свои поездки.</p>
+      <a href="#" data-contact="instagram" target="_blank" class="btn btn-outline">Спросить про партнёрство</a>
+    </div>
   </div>
 </section>
 
@@ -1415,8 +1440,8 @@
       </div>
       <div class="footer-col">
         <h5>Разделы</h5>
-        <a href="#about">Что такое InCruises</a>
-        <a href="#benefits">Выгоды</a>
+        <a href="#destinations">Направления</a>
+        <a href="#about">Как работает клуб</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Контакты</a>
       </div>
