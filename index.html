@@ -14,27 +14,29 @@
     --HERO_BG_IMAGE: url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1800&q=80');
     --BENEFITS_BG_IMAGE: url('https://images.unsplash.com/photo-1580541631950-7282082b53ce?auto=format&fit=crop&w=1600&q=80');
 
-    /* Travel palette: warm sand + ocean teal + sunset coral + muted gold */
-    --teal:#1B7A8C;
-    --teal-dark:#145E6D;
-    --blue-deep:#12495A;
-    --blue-mid:#17667A;
-    --sunset:#E8896A;
-    --sunset-dark:#D9714F;
-    --gold:#D4AF7A;
-    --ink:#2B2B2B;
-    --muted:#6B6459;
-    --bg:#FAF6F0;
+    /* Elite luxury travel palette: ivory + deep navy + rich gold + muted teal accent */
+    --teal:#1F4B52;
+    --teal-dark:#14363C;
+    --blue-deep:#0B1F2E;
+    --blue-mid:#14344A;
+    --sunset:#8B3A3A;
+    --sunset-dark:#6E2C2C;
+    --gold:#C9A227;
+    --gold-dark:#A9861E;
+    --gold-light:#E4CD8C;
+    --ink:#1C1C1C;
+    --muted:#7A7468;
+    --bg:#F7F3EA;
     --white:#ffffff;
-    --accent:#E8896A;
+    --accent:#C9A227;
 
     --font-serif:'Playfair Display', Georgia, serif;
     --font-sans:'Inter', 'Segoe UI', Roboto, sans-serif;
 
-    --radius:20px;
-    --radius-lg:28px;
-    --shadow:0 14px 40px rgba(18,73,90,0.10);
-    --shadow-lg:0 24px 60px rgba(18,73,90,0.16);
+    --radius:6px;
+    --radius-lg:10px;
+    --shadow:0 10px 28px rgba(11,31,46,0.08);
+    --shadow-lg:0 18px 44px rgba(11,31,46,0.12);
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
@@ -92,32 +94,35 @@
     align-items:center;
     justify-content:center;
     gap:8px;
-    padding:16px 34px;
-    border-radius:999px;
+    padding:16px 36px;
+    border-radius:2px;
     font-weight:700;
-    font-size:17px;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
     cursor:pointer;
     border:none;
     transition:transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s ease;
   }
   .btn-primary{
-    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
-    color:#fff;
-    box-shadow:0 10px 25px rgba(27,122,140,0.4);
+    background:var(--blue-deep);
+    color:var(--gold-light);
+    border:1px solid var(--gold);
+    box-shadow:0 10px 25px rgba(11,31,46,0.35);
   }
-  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(27,122,140,0.5);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(11,31,46,0.45);}
   .btn-accent{
     background:var(--accent);
-    color:var(--ink);
-    box-shadow:0 10px 25px rgba(232,137,106,0.4);
+    color:var(--blue-deep);
+    box-shadow:0 10px 25px rgba(201,162,39,0.35);
   }
-  .btn-accent:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(232,137,106,0.5);}
+  .btn-accent:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(201,162,39,0.45);background:var(--gold-dark);}
   .btn-outline{
     background:transparent;
-    border:2px solid var(--teal);
-    color:var(--teal-dark);
+    border:1px solid var(--gold);
+    color:var(--blue-deep);
   }
-  .btn-outline:hover{background:var(--teal);color:#fff;transform:translateY(-3px);}
+  .btn-outline:hover{background:var(--gold);color:var(--blue-deep);transform:translateY(-3px);}
   .btn-instagram, .btn-whatsapp, .btn-call{width:100%;}
   .btn-whatsapp{
     background:#25D366;
@@ -144,9 +149,9 @@
     position:fixed;
     top:0;left:0;right:0;
     z-index:900;
-    background:rgba(250,246,240,0.92);
+    background:rgba(247,243,234,0.92);
     backdrop-filter:blur(10px);
-    box-shadow:0 2px 18px rgba(18,73,90,0.08);
+    box-shadow:0 2px 18px rgba(11,31,46,0.08);
   }
   .nav{
     display:flex;
@@ -175,8 +180,8 @@
     align-items:center;
     padding:170px 0 100px;
     background-image:
-      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12), transparent 40%),
-      linear-gradient(135deg, rgba(18,73,90,0.7) 0%, rgba(27,122,140,0.55) 50%, rgba(232,137,106,0.55) 100%),
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 40%),
+      linear-gradient(160deg, rgba(11,31,46,0.88) 0%, rgba(20,52,74,0.62) 55%, rgba(0,0,0,0.5) 100%),
       var(--HERO_BG_IMAGE);
     background-size:cover;
     background-position:center;
@@ -191,6 +196,15 @@
     text-align:center;
     max-width:780px;
     margin:0 auto;
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:22px;
   }
   .hero h1{
     font-size:clamp(34px,5.6vw,58px);
@@ -239,11 +253,12 @@
   .icon-circle{
     flex:none;
     width:52px;height:52px;
-    border-radius:14px;
-    background:linear-gradient(135deg,var(--teal),var(--blue-mid));
+    border-radius:50%;
+    background:var(--white);
+    border:1.5px solid var(--gold);
     display:flex;align-items:center;justify-content:center;
-    font-size:24px;
-    color:#fff;
+    font-size:22px;
+    color:var(--blue-deep);
   }
   .about-points h4{font-size:18px;margin-bottom:4px;color:var(--blue-deep);}
   .about-points p{color:var(--muted);font-size:15.5px;}
@@ -283,8 +298,8 @@
     display:flex;
     gap:16px;
     align-items:flex-start;
-    background:rgba(212,175,122,0.14);
-    border:1px solid rgba(212,175,122,0.4);
+    background:rgba(201,162,39,0.12);
+    border:1px solid rgba(201,162,39,0.4);
     border-radius:var(--radius);
     padding:22px 24px;
   }
@@ -449,7 +464,7 @@
     background:rgba(255,255,255,0.92);
     border:none;
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 8px 24px rgba(18,73,90,0.4);
+    box-shadow:0 8px 24px rgba(11,31,46,0.4);
     font-size:22px;
     color:var(--blue-deep);
     z-index:1;
@@ -491,7 +506,7 @@
 
   /* Benefits */
   .benefits{
-    background-image:linear-gradient(rgba(18,73,90,0.75), rgba(18,73,90,0.75)), var(--BENEFITS_BG_IMAGE);
+    background-image:linear-gradient(rgba(11,31,46,0.78), rgba(11,31,46,0.78)), var(--BENEFITS_BG_IMAGE);
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
@@ -827,9 +842,15 @@
     --pulse-color:rgba(37,211,102,0.5);
   }
   @keyframes pulse{
-    0%{box-shadow:0 0 0 0 var(--pulse-color,rgba(18,73,90,0.5));}
-    70%{box-shadow:0 0 0 16px rgba(18,73,90,0);}
-    100%{box-shadow:0 0 0 0 rgba(18,73,90,0);}
+    0%{box-shadow:0 0 0 0 var(--pulse-color,rgba(11,31,46,0.5));}
+    70%{box-shadow:0 0 0 16px rgba(11,31,46,0);}
+    100%{box-shadow:0 0 0 0 rgba(11,31,46,0);}
+  }
+
+  /* Boutique hairline border shared by all elevated card surfaces */
+  .info-card, .stat-card, .step-card, .journey-card, .review-card,
+  .about-card, .faq-item, .partner-card, .about-visual{
+    border:1px solid rgba(201,162,39,0.22);
   }
 
   .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
@@ -879,6 +900,7 @@
 
 <section class="hero" id="hero">
   <div class="container hero-inner">
+    <div class="hero-eyebrow">Присоединяйся к тем, кто уже выбрал свободу</div>
     <h1>Просыпаться под шум океана каждое утро — это не мечта, а маршрут.</h1>
     <p>Средиземноморье, Карибы, Северная Европа, Антарктида — выбирай, куда сбежать первым.</p>
     <a href="#scenes" class="btn btn-accent">Смотреть маршруты ↓</a>
